@@ -95,7 +95,10 @@ dkp_commands = [
     f"{cmd_for_config.replace('config', 'update')}"
     f"{cmd_for_config}"
     f"{cmd_for_config} --help"
+    f"{cmd_for_config} -restartshell"
+    f"{cmd_for_config} -exit"
 ]
+
 def completer(text, state):
     options = [cmd for cmd in dkp_commands if cmd.startswith(text)]
     if state < len(options):
@@ -103,6 +106,8 @@ def completer(text, state):
     return None
 
 readline.set_completer(completer)
+readline.parse_and_bind("tab: complete")
+
 # Déclenchement du shell
 if is_root():
         start = input(f"{RED}\nTapez 'start' pour lancer le DKP Shell : {RESET}").strip().lower()
