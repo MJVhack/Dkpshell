@@ -29,6 +29,8 @@ ORANGE = "\033[38;5;208m"
 def is_root():
     return os.geteuid() == 0
 
+cmd_for_config = "dkpconfig"
+
 # Affichage ASCII Art
 ascii_art = fr"""{CYAN}
 <!-- .------------------------------------------------------------------------------------------------. -->
@@ -106,7 +108,6 @@ if is_root():
         start = input(f"{RED}\nTapez 'start' pour lancer le DKP Shell : {RESET}").strip().lower()
 else:
         start = input(f"{MAGENTA}\nTapez 'start' pour lancer le DKP Shell : {RESET}").strip().lower()
-cmd_for_config = "dkpconfig"
 # Prompt shell personnalisé
 def shell():
     user = getpass.getuser()
