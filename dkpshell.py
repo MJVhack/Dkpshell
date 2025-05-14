@@ -12,8 +12,35 @@ histfile = os.path.expanduser("~/.dkpshell_history")
 readline.read_history_file(histfile) if os.path.exists(histfile) else None
 atexit.register(readline.write_history_file, histfile)
 
-readline.parse_and_bind("tab: complete")
+dkp_commands = [
+    f"{cmd_for_config} -color red"
+    f"{cmd_for_config} -color green"
+    f"{cmd_for_config} -color yellow"
+    f"{cmd_for_config} -color cyan"
+    f"{cmd_for_config} -color magenta"
+    f"{cmd_for_config} -color white"
+    f"{cmd_for_config} -color bold"
+    f"{cmd_for_config} -color blue"
+    f"{cmd_for_config} -color orange"
+    f"{cmd_for_config.replace('config', 'update')}"
+    f"{cmd_for_config}"
+    f"{cmd_for_config} --help"
+    f"{cmd_for_config} -restartshell"
+    f"{cmd_for_config} -exit"
+]
 
+readline.parse_and_bind("tab: complete")
+readline.set_completer_delims(" \t\n")
+readline.set_completion_display_matches_hook(
+    lambda substitution, matches, longest_match_length:
+        print("\n" + "\n".join(matches))
+)
+
+def completer(text, state):
+    matches = [cmd for cmd in dkp_commands if cmd.startswith(text)]
+    return matches[state] if state < len(matches) else Non
+
+readline.set_completer(completer)
 
 RED = "\033[91m"
 GREEN = "\033[92m"
@@ -82,31 +109,7 @@ if add_to_path == "yes":
         print(f"{ORANGE}[!] Permission refusée. Relancez en sudo pour l'ajouter au PATH.{RESET}")
     except Exception as e:
         print(f"{RED}[!] Erreur lors de la copie : {e}{RESET}")
-dkp_commands = [
-    f"{cmd_for_config} -color red"
-    f"{cmd_for_config} -color green"
-    f"{cmd_for_config} -color yellow"
-    f"{cmd_for_config} -color cyan"
-    f"{cmd_for_config} -color magenta"
-    f"{cmd_for_config} -color white"
-    f"{cmd_for_config} -color bold"
-    f"{cmd_for_config} -color blue"
-    f"{cmd_for_config} -color orange"
-    f"{cmd_for_config.replace('config', 'update')}"
-    f"{cmd_for_config}"
-    f"{cmd_for_config} --help"
-    f"{cmd_for_config} -restartshell"
-    f"{cmd_for_config} -exit"
-]
 
-def completer(text, state):
-    options = [cmd for cmd in dkp_commands if cmd.startswith(text)]
-    if state < len(options):
-        return options[state]
-    return None
-
-readline.set_completer(completer)
-readline.parse_and_bind("tab: complete")
 
 # Déclenchement du shell
 if is_root():
