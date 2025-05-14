@@ -172,22 +172,34 @@ def shell():
 
 
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
-                print(f"{CYAN}[DKP Shell] : Mise à jour du script en cours...{RESET}")
+                print(f"{CYAN}[DKP Shell] : Mise à jour en cours...{RESET}")
                 try:
-                    # Remplace cette URL par celle de TON script brut
-                    url = "https://raw.githubusercontent.com/MJVhack/MJVhack/refs/heads/main/dkpshell.py"
-                    local_filename = os.path.realpath(__file__)
-        
+                    # Variables
+                    update_url = "https://raw.githubusercontent.com/tonuser/tonrepo/main/dkpscript.py"  # 🔁 Modifie ici
+                    local_script = os.path.realpath(__file__)
+                    bin_path = "/usr/local/bin/dkp"  # ou '~/bin/dkp' selon où tu le copies
 
-                    urllib.request.urlretrieve(url, local_filename)
-        
-                    print(f"{GREEN}[DKP Shell] : Script mis à jour avec succès !{RESET}")
-                    print(f"{YELLOW}[DKP Shell] : Redémarre le script pour appliquer les changements.{RESET}")
-                    sys.exit(0)
-                
-                except Exception as e:
-                    print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}")
-                sys.exit(0)
+                    # Télécharger nouvelle version
+                    urllib.request.urlretrieve(update_url, local_script)
+                    print(f"{GREEN}[✓] Script local mis à jour : {local_script}{RESET}")
+
+                    # Copier vers /usr/local/bin (accès global)
+                    if os.path.exists(bin_path) or os.access(os.path.dirname(bin_path), os.W_OK):
+                        shutil.copy(local_script, bin_path)
+                        os.chmod(bin_path, 0o755)
+                        print(f"{GREEN}[✓] Script copié dans {bin_path}{RESET}")
+                    else:
+                        print(f"{YELLOW}[!] Pas de permission pour écrire dans {bin_path}. Skipped.{RESET}")
+
+                    # Redémarrer le shell automatiquement
+                    print(f"{CYAN}[DKP Shell] : Redémarrage du shell...{RESET}")
+                    python_exe = sys.executable
+                    os.execv(python_exe, [python_exe, local_script])
+
+            except Exception as e:
+                print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}")
+            continue
+
                 
 
             else:
