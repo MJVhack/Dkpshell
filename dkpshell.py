@@ -138,6 +138,19 @@ def shell():
             elif shell_input in [f"{cmd_for_config} -color orange"]:
                  shell_input = input(f"{ORANGE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
+
+            elif shell_input == f"{cmd_for_config} -restartshell":
+                print(f"{YELLOW}[DKP Shell] : Redémarrage du shell...{RESET}")
+                python_exe = sys.executable  # Chemin vers l'interpréteur Python
+                script_path = os.path.realpath(__file__)  # Chemin vers le script courant
+                os.execv(python_exe, [python_exe, script_path])  # Relance le script
+
+            
+            elif shell_input == f"{cmd_for_config} -exit":
+                print(f"{GREEN}[DKP Shell] : Fermeture{RESET}")
+                sys.exit(0)
+
+
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
                 print(f"{CYAN}[DKP Shell] : Mise à jour du script en cours...{RESET}")
                 try:
