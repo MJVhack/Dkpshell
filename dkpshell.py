@@ -80,7 +80,24 @@ if add_to_path == "yes":
         print(f"{ORANGE}[!] Permission refusée. Relancez en sudo pour l'ajouter au PATH.{RESET}")
     except Exception as e:
         print(f"{RED}[!] Erreur lors de la copie : {e}{RESET}")
+dkp_commands = [
+    "{cmd_for_config} -color red"
+    "{cmd_for_config} -color green"
+    "{cmd_for_config} -color yellow"
+    "{cmd_for_config} -color cyan"
+    "{cmd_for_config} -color magenta"
+    "{cmd_for_config} -color white"
+    "{cmd_for_config} -color bold"
+    "{cmd_for_config} -color blue"
+    "{cmd_for_config} -color orange"
+]
+def completer(text, state):
+    options = [cmd for cmd in dkp_commands if cmd.startswith(text)]
+    if state < len(options):
+        return options[state]
+    return None
 
+readline.set_completer(completer)
 # Déclenchement du shell
 if is_root():
         start = input(f"{RED}\nTapez 'start' pour lancer le DKP Shell : {RESET}").strip().lower()
