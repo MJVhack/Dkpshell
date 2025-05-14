@@ -200,7 +200,7 @@ def shell():
                     os.execv(python_exe, [python_exe, local_script])
                     
                 except Exception as e:
-                print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}")
+                    print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}")
                 continue
 
                 
