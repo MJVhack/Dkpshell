@@ -5,6 +5,7 @@ import shutil
 import urllib.request
 import readline
 import atexit
+import sys
 
 
 histfile = os.path.expanduser("~/.dkpshell_history")
@@ -146,9 +147,10 @@ def shell():
         
                     print(f"{GREEN}[DKP Shell] : Script mis à jour avec succès !{RESET}")
                     print(f"{YELLOW}[DKP Shell] : Redémarre le script pour appliquer les changements.{RESET}")
+                    sys.exit(0)
                 except Exception as e:
-                    print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}")
-    finally
+                    print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}"
+                
 
             else:
                  print(f"{RED}Commande non reconnu")
