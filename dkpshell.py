@@ -3,6 +3,13 @@ import os
 import getpass
 import shutil
 import urllib.request
+import readline
+import atexit
+
+
+histfile = os.path.expanduser("~/.dkpshell_history")
+readline.read_history_file(histfile) if os.path.exists(histfile) else None
+atexit.register(readline.write_history_file, histfile
 
 RED = "\033[91m"
 GREEN = "\033[92m"
