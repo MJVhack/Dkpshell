@@ -152,7 +152,7 @@ def shell():
 
             else:
                  print(f"{RED}Commande non reconnu")
-            continue 
+            break
 
             print(f"{YELLOW}")
             os.system(shell_input)
