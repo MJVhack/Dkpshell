@@ -93,20 +93,23 @@ def shell():
             print("")
             shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
             if shell_input in [f"{cmd_for_config}", f"{cmd_for_config} --help"]:
-                print(f"""{MAGENTA}DKPSHELL  help
-{cmd_for_config} -colorlist""")
+                print(f"{MAGENTA}DKPSHELL help")
+                print("")
+                print(f"{MAGENTA} {cmd_for_config} -colorlist {RESET}")
+                print(f"{MAGENTA}{cmd_for_config.replace('config', 'update')}{RESET}")
                 continue
             elif shell_input in [f"{cmd_for_config} -colorlist"]:
                  print(f'''{MAGENTA}DKPSHELL color
-                RED = {cmd_for_config} -color red
-                GREEN = {cmd_for_config} -color green
-                YELLOW = {cmd_for_config} -color yellow
-                CYAN = {cmd_for_config} -color cyan
-                MAGENTA = {cmd_for_config} -color magenta
-                WHITE = {cmd_for_config} -color white
-                BOLD = {cmd_for_config} -color bold
-                BLUE = {cmd_for_config} -color blue
-                ORANGE = {cmd_for_config} -color orange''')
+                 
+                 RED = {cmd_for_config} -color red
+                 GREEN = {cmd_for_config} -color green
+                 YELLOW = {cmd_for_config} -color yellow
+                 CYAN = {cmd_for_config} -color cyan
+                 MAGENTA = {cmd_for_config} -color magenta
+                 WHITE = {cmd_for_config} -color white
+                 BOLD = {cmd_for_config} -color bold
+                 BLUE = {cmd_for_config} -color blue
+                 ORANGE = {cmd_for_config} -color orange''')
                  continue
             elif shell_input in [f"{cmd_for_config} -color red"]:
                  shell_input = input(f"{RED}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
