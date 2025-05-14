@@ -2,6 +2,7 @@
 import os
 import getpass
 import shutil
+import urllib.request
 
 RED = "\033[91m"
 GREEN = "\033[92m"
@@ -71,10 +72,10 @@ if add_to_path == "yes":
 
 # Déclenchement du shell
 if is_root():
-	start = input(f"{RED}\nTapez 'start' pour lancer le DKP Shell : {RESET}").strip().lower()
+        start = input(f"{RED}\nTapez 'start' pour lancer le DKP Shell : {RESET}").strip().lower()
 else:
-	start = input(f"{MAGENTA}\nTapez 'start' pour lancer le DKP Shell : {RESET}").strip().lower()
-
+        start = input(f"{MAGENTA}\nTapez 'start' pour lancer le DKP Shell : {RESET}").strip().lower()
+cmd_for_config = "dkpconfig"
 # Prompt shell personnalisé
 def shell():
     user = getpass.getuser()
@@ -83,8 +84,72 @@ def shell():
         while True:
             print("")
             shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+            if shell_input in [f"{cmd_for_config}", f"{cmd_for_config} --help"]:
+                print(f"""{MAGENTA}DKPSHELL  help
+{cmd_for_config} -colorlist""")
+                continue
+            elif shell_input in [f"{cmd_for_config} -colorlist"]:
+                 print(f'''{MAGENTA}DKPSHELL color
+                RED = {cmd_for_config} -color red
+                GREEN = {cmd_for_config} -color green
+                YELLOW = {cmd_for_config} -color yellow
+                CYAN = {cmd_for_config} -color cyan
+                MAGENTA = {cmd_for_config} -color magenta
+                WHITE = {cmd_for_config} -color white
+                BOLD = {cmd_for_config} -color bold
+                BLUE = {cmd_for_config} -color blue
+                ORANGE = {cmd_for_config} -color orange''')
+                 continue
+            elif shell_input in [f"{cmd_for_config} -color red"]:
+                 shell_input = input(f"{RED}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 continue
+            elif shell_input in [f"{cmd_for_config} -color green"]:
+                 shell_input = input(f"{GREEN}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 continue
+            elif shell_input in [f"{cmd_for_config} -color yellow"]:
+                 shell_input = input(f"{YELLOW}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 continue
+            elif shell_input in [f"{cmd_for_config} -color cyan"]:
+                 shell_input = input(f"{CYAN}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 continue
+            elif shell_input in [f"{cmd_for_config} -color magenta"]:
+                 shell_input = input(f"{MAGENTA}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 continue
+            elif shell_input in [f"{cmd_for_config} -color white"]:
+                 shell_input = input(f"{RESET}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 continue
+            elif shell_input in [f"{cmd_for_config} -color bold"]:
+                 shell_input = input(f"{BOLD}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 continue
+            elif shell_input in [f"{cmd_for_config} -color blue"]:
+                 shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 continue
+            elif shell_input in [f"{cmd_for_config} -color orange"]:
+                 shell_input = input(f"{ORANGE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 continue
+            elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
+                print(f"{CYAN}[DKP Shell] : Mise à jour du script en cours...{RESET}")
+                try:
+                    # Remplace cette URL par celle de TON script brut
+                    url = ""
+                    local_filename = os.path.realpath(__file__)
+        
+
+                    urllib.request.urlretrieve(url, local_filename)
+        
+                    print(f"{GREEN}[DKP Shell] : Script mis à jour avec succès !{RESET}")
+                    print(f"{YELLOW}[DKP Shell] : Redémarre le script pour appliquer les changements.{RESET}")
+                except Exception as e:
+                    print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}")
+                continue
+
+            else:
+                 print(f"{RED}Commande non reconnu")
+
             print(f"{YELLOW}")
             os.system(shell_input)
+
+
     except KeyboardInterrupt:
         print(f"{GREEN}\n[DKP Shell]: Fermeture.{RESET}")
         exit()
