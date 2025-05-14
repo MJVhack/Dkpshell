@@ -149,7 +149,8 @@ def shell():
                     print(f"{YELLOW}[DKP Shell] : Redémarre le script pour appliquer les changements.{RESET}")
                     sys.exit(0)
                 except Exception as e:
-                    print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}"
+                    print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}")
+                sys.exit(0)
                 
 
             else:
