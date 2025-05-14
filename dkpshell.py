@@ -6,11 +6,14 @@ import urllib.request
 import readline
 import atexit
 import sys
-
+import rlcompleter
 
 histfile = os.path.expanduser("~/.dkpshell_history")
 readline.read_history_file(histfile) if os.path.exists(histfile) else None
 atexit.register(readline.write_history_file, histfile)
+
+readline.parse_and_bind("tab: complete")
+
 
 RED = "\033[91m"
 GREEN = "\033[92m"
