@@ -12,6 +12,8 @@ histfile = os.path.expanduser("~/.dkpshell_history")
 readline.read_history_file(histfile) if os.path.exists(histfile) else None
 atexit.register(readline.write_history_file, histfile)
 
+cmd_for_config = "dkpconfig"
+
 dkp_commands = [
     f"{cmd_for_config} -color red"
     f"{cmd_for_config} -color green"
@@ -56,7 +58,7 @@ ORANGE = "\033[38;5;208m"
 def is_root():
     return os.geteuid() == 0
 
-cmd_for_config = "dkpconfig"
+
 
 # Affichage ASCII Art
 ascii_art = fr"""{CYAN}
