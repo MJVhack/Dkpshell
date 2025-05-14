@@ -198,10 +198,10 @@ def shell():
                     print(f"{CYAN}[DKP Shell] : Redémarrage du shell...{RESET}")
                     python_exe = sys.executable
                     os.execv(python_exe, [python_exe, local_script])
-
-            except Exception as e:
+                    
+                except Exception as e:
                 print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}")
-            continue
+                continue
 
                 
 
