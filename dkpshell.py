@@ -131,7 +131,7 @@ def shell():
                 print(f"{CYAN}[DKP Shell] : Mise à jour du script en cours...{RESET}")
                 try:
                     # Remplace cette URL par celle de TON script brut
-                    url = ""
+                    url = "https://raw.githubusercontent.com/MJVhack/MJVhack/refs/heads/main/dkpshell.py"
                     local_filename = os.path.realpath(__file__)
         
 
