@@ -148,7 +148,7 @@ def shell():
                     print(f"{YELLOW}[DKP Shell] : Redémarre le script pour appliquer les changements.{RESET}")
                 except Exception as e:
                     print(f"{RED}[Erreur] : La mise à jour a échoué : {e}{RESET}")
-    break
+    finally
 
             else:
                  print(f"{RED}Commande non reconnu")
