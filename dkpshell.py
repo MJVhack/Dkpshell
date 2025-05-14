@@ -9,7 +9,7 @@ import atexit
 
 histfile = os.path.expanduser("~/.dkpshell_history")
 readline.read_history_file(histfile) if os.path.exists(histfile) else None
-atexit.register(readline.write_history_file, histfile
+atexit.register(readline.write_history_file, histfile)
 
 RED = "\033[91m"
 GREEN = "\033[92m"
@@ -152,6 +152,7 @@ def shell():
 
             else:
                  print(f"{RED}Commande non reconnu")
+            continue 
 
             print(f"{YELLOW}")
             os.system(shell_input)
