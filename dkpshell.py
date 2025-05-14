@@ -207,7 +207,7 @@ def shell():
                 
 
             else:
-                 print(f"{RED}Commande non reconnu")
+                 print(f"{RED}Commande non reconnu en tant que commande {MAGENTA} [DKP]")
             continue
 
             print(f"{YELLOW}")
