@@ -175,7 +175,7 @@ def shell():
                 print(f"{CYAN}[DKP Shell] : Mise à jour en cours...{RESET}")
                 try:
                     # Variables
-                    update_url = "https://raw.githubusercontent.com/tonuser/tonrepo/main/dkpscript.py"  # 🔁 Modifie ici
+                    update_url = "https://raw.githubusercontent.com/MJVhack/MJVhack/refs/heads/main/dkpshell.py"  # 🔁 Modifie ici
                     local_script = os.path.realpath(__file__)
                     bin_path = "/usr/local/bin/dkp"  # ou '~/bin/dkp' selon où tu le copies
 
