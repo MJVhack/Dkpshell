@@ -207,11 +207,11 @@ def shell():
                 
 
             else:
-                 print(f"{RED}Commande non reconnu en tant que commande {MAGENTA} [DKP]")
+                print(f"{RED}Commande non reconnu en tant que commande {MAGENTA} [DKP]")
+                print(f"{YELLOW}")
+                os.system(shell_input)
             continue
 
-            print(f"{YELLOW}")
-            os.system(shell_input)
 
 
     except KeyboardInterrupt:
