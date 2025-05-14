@@ -81,15 +81,18 @@ if add_to_path == "yes":
     except Exception as e:
         print(f"{RED}[!] Erreur lors de la copie : {e}{RESET}")
 dkp_commands = [
-    "{cmd_for_config} -color red"
-    "{cmd_for_config} -color green"
-    "{cmd_for_config} -color yellow"
-    "{cmd_for_config} -color cyan"
-    "{cmd_for_config} -color magenta"
-    "{cmd_for_config} -color white"
-    "{cmd_for_config} -color bold"
-    "{cmd_for_config} -color blue"
-    "{cmd_for_config} -color orange"
+    f"{cmd_for_config} -color red"
+    f"{cmd_for_config} -color green"
+    f"{cmd_for_config} -color yellow"
+    f"{cmd_for_config} -color cyan"
+    f"{cmd_for_config} -color magenta"
+    f"{cmd_for_config} -color white"
+    f"{cmd_for_config} -color bold"
+    f"{cmd_for_config} -color blue"
+    f"{cmd_for_config} -color orange"
+    f"{cmd_for_config.replace('config', 'update')}"
+    f"{cmd_for_config}"
+    f"{cmd_for_config} --help"
 ]
 def completer(text, state):
     options = [cmd for cmd in dkp_commands if cmd.startswith(text)]
