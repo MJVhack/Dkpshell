@@ -8,7 +8,7 @@ import atexit
 import sys
 import rlcompleter
 
-__version__ = "1.1"
+__version__ = "1.1.0.1"
 
 def check_update():
     try:
@@ -100,7 +100,7 @@ ascii_art = fr"""{CYAN}
 <!-- |                                                                                                | -->
 <!-- '------------------------------------------------------------------------------------------------' -->
                                            BY DKP
-                                           {__version__}
+                                           version : {__version__}
 {RESET}
 """
 os.system("clear")
