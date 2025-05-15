@@ -10,7 +10,9 @@ import rlcompleter
 import subprocess
 import re
 
-__version__ = "2.6"
+prompt_color = "BLUE"
+
+__version__ = "2.7"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -88,7 +90,23 @@ def completer(text, state):
 
 readline.set_completer(completer)
 
-
+def color_config():
+    print('''RED = "\033[91m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+CYAN = "\033[96m"
+MAGENTA = "\033[95m"
+RESET = "\033[0m"
+BOLD = "\033[1m"
+BLUE = "\033[94m"
+ORANGE = "\033[38;5;208m"''')
+    print("mettait EXACTEMENT le nom des variables")
+    A_color = input("")
+    B_color = input("")
+    C_color = input("")
+    D_color = input("")
+    E_color = input("")
+    shell_input1 = input(f"{A_color}┌──({B_color}{custom_prompt}{C_color}{root_state}{D_color}{user})-[{E_color}~]\n└─[ {RESET}")
 
 # Fonction pour détecter si root
 def is_root():
@@ -237,7 +255,7 @@ def shell():
             if shell_input in [f"{cmd_for_config}", f"{cmd_for_config} --help"]:
                 print(f"{MAGENTA}DKPSHELL help")
                 print("")
-                print(f"{MAGENTA} {cmd_for_config} -colorlist {RESET}")
+                print(f"{MAGENTA}{cmd_for_config} -colorlist {RESET}")
                 print(f"{MAGENTA}{cmd_for_config.replace('config', 'update')}{RESET}")
                 print(f"{MAGENTA}{cmd_for_config.replace('config', 'tool')}{RESET}")
                 continue
@@ -255,31 +273,31 @@ def shell():
                  ORANGE = {cmd_for_config} -color orange''')
                  continue
             elif shell_input in [f"{cmd_for_config} -color red"]:
-                 shell_input = input(f"{RED}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = RED
                  continue
             elif shell_input in [f"{cmd_for_config} -color green"]:
-                 shell_input = input(f"{GREEN}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = GREEN
                  continue
             elif shell_input in [f"{cmd_for_config} -color yellow"]:
-                 shell_input = input(f"{YELLOW}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = YELLOW
                  continue
             elif shell_input in [f"{cmd_for_config} -color cyan"]:
-                 shell_input = input(f"{CYAN}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = CYAN
                  continue
             elif shell_input in [f"{cmd_for_config} -color magenta"]:
-                 shell_input = input(f"{MAGENTA}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = MAGENTA
                  continue
             elif shell_input in [f"{cmd_for_config} -color white"]:
-                 shell_input = input(f"{RESET}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = RESET
                  continue
             elif shell_input in [f"{cmd_for_config} -color bold"]:
-                 shell_input = input(f"{BOLD}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = BOLD
                  continue
             elif shell_input in [f"{cmd_for_config} -color blue"]:
-                 shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = BLUE
                  continue
             elif shell_input in [f"{cmd_for_config} -color orange"]:
-                 shell_input = input(f"{ORANGE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = ORANGE
                  continue
 
             elif shell_input in [f"{cmd_for_config} -restartshell"]:
@@ -298,6 +316,9 @@ def shell():
 
             elif shell_input == f"{cmd_for_config.replace('config', 'tool')} -e MenuOsint":
                 OsintMenu()
+
+            elif shell_input == f"{cmd_for_config} -color config":
+                
                 
 
 
@@ -333,6 +354,7 @@ def shell():
                 
 
             else:
+                shell_input = input(f"{prompt_color}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                 print(f"{RED}Commande non reconnu en tant que commande {MAGENTA}[DKP]")
                 print(f"{YELLOW}")
                 os.system(shell_input)
