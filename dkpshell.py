@@ -94,15 +94,15 @@ def completer(text, state):
 readline.set_completer(completer)
 
 def color_config():
-    print('''RED = "\033[91m"
-GREEN = "\033[92m"
-YELLOW = "\033[93m"
-CYAN = "\033[96m"
-MAGENTA = "\033[95m"
-RESET = "\033[0m"
-BOLD = "\033[1m"
-BLUE = "\033[94m"
-ORANGE = "\033[38;5;208m"''')
+    print(f'''{RED}RED 
+{GREEN}GREEN
+{YELLOW}YELLOW 
+{CYAN}CYAN 
+{MAGENTA}MAGENTA 
+{RESET}RESET 
+{BOLD}BOLD 
+{BLUE}BLUE 
+{ORANGE}ORANGE ''')
     print("mettait EXACTEMENT le nom des variables")
     A_color = input("")
     B_color = input("")
