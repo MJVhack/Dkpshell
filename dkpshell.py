@@ -320,8 +320,9 @@ def shell():
             elif shell_input == f"{cmd_for_config.replace('config', 'tool')} -e MenuOsint":
                 OsintMenu()
 
-"""            elif shell_input == f"{cmd_for_config} -color config":
-                print(f'''{RED}RED 
+            elif shell_input == f"{cmd_for_config} -color config":
+                print("Cette option a été momontanément désactiver.")
+"""                print(f'''{RED}RED 
 {GREEN}GREEN
 {YELLOW}YELLOW 
 {CYAN}CYAN 
