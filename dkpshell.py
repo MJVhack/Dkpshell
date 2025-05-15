@@ -10,7 +10,7 @@ import rlcompleter
 import subprocess
 import re
 
-__version__ = "2.4"
+__version__ = "2.5"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -95,7 +95,7 @@ def OsintMenu():
         print(f"[5] SQLMap (Injection SQL)")
         print(f"[6] Installer (Si aucun module est present ou manque un")
         print(f"[0] Quitter{RESET}")
-        return input("Choisis une option > ")
+        return input(f"{ORANGE}Choisis une option > ")
 
     def run_sherlock():
         username = input("Entrez le pseudo à chercher : ")
@@ -142,6 +142,8 @@ def OsintMenu():
             run_nmap()
         elif choice == "5":
             run_sqlmap()
+        elif choice == "6":
+            install_all()
         elif choice == "0":
             print("Fermeture du QG OSINT. Timeline By SA")
             break
@@ -277,7 +279,7 @@ def shell():
                 sys.exit(0)
 
             elif shell_input in [f"{cmd_for_config.replace('config', 'tool')} --help",f"{cmd_for_config.replace('config', 'tool')}" ]:
-                print("Menu Osint: dkptool -e MenuOsint")
+                print(f"{YELLOW}Menu Osint: dkptool -e MenuOsint")
 
             elif shell_input == f"{cmd_for_config.replace('config', 'tool')} -e MenuOsint":
                 OsintMenu()
