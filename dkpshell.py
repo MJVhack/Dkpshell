@@ -318,10 +318,8 @@ def shell():
                 OsintMenu()
 
             elif shell_input == f"{cmd_for_config} -color config":
+                color_config()
                 
-                
-
-
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
                 print(f"{CYAN}[DKP Shell] : Mise à jour en cours...{RESET}")
                 try:
