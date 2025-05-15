@@ -32,7 +32,7 @@ def check_update():
             remote_version = match.group(1)
             if remote_version > __version__:
                 print(f"{MAGENTA}[DKP Shell] : Une mise à jour est disponible ({__version__} → {remote_version}){RESET}")
-                print("{CYAN}➜ Lance la commande `dkpupdate` pour mettre à jour{RESET}")
+                print(f"{CYAN}➜ Lance la commande `dkpupdate` pour mettre à jour{RESET}")
     except Exception as e:
         print(f"{RED}[DKP Shell] : Échec de vérification de mise à jour : {e}\033[0m")
 
