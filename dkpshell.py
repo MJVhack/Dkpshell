@@ -10,7 +10,7 @@ import rlcompleter
 import subprocess
 import re
 
-prompt_color = BLUE
+
 
 __version__ = "2.7"
 RED = "\033[91m"
@@ -22,6 +22,9 @@ RESET = "\033[0m"
 BOLD = "\033[1m"
 BLUE = "\033[94m"
 ORANGE = "\033[38;5;208m"
+
+prompt_color = BLUE
+
 def check_update():
     try:
         url = "https://raw.githubusercontent.com/MJVhack/MJVhack/main/dkpshell.py"
