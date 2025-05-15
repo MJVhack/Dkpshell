@@ -8,9 +8,18 @@ import atexit
 import sys
 import rlcompleter
 import subprocess
+import re
 
 __version__ = "2.3"
-
+RED = "\033[91m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+CYAN = "\033[96m"
+MAGENTA = "\033[95m"
+RESET = "\033[0m"
+BOLD = "\033[1m"
+BLUE = "\033[94m"
+ORANGE = "\033[38;5;208m"
 def check_update():
     try:
         url = "https://raw.githubusercontent.com/MJVhack/MJVhack/main/dkpshell.py"
@@ -66,15 +75,7 @@ def completer(text, state):
 
 readline.set_completer(completer)
 
-RED = "\033[91m"
-GREEN = "\033[92m"
-YELLOW = "\033[93m"
-CYAN = "\033[96m"
-MAGENTA = "\033[95m"
-RESET = "\033[0m"
-BOLD = "\033[1m"
-BLUE = "\033[94m"
-ORANGE = "\033[38;5;208m"
+
 
 # Fonction pour détecter si root
 def is_root():
