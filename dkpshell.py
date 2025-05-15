@@ -10,7 +10,7 @@ import rlcompleter
 import subprocess
 import re
 
-__version__ = "2.3"
+__version__ = "2.4"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -222,6 +222,7 @@ def shell():
                 print("")
                 print(f"{MAGENTA} {cmd_for_config} -colorlist {RESET}")
                 print(f"{MAGENTA}{cmd_for_config.replace('config', 'update')}{RESET}")
+                print(f"{MAGENTA}{cmd_for_config.replace('config', 'tool')}{RESET}")
                 continue
             elif shell_input in [f"{cmd_for_config} -colorlist"]:
                  print(f'''{MAGENTA}DKPSHELL color
@@ -274,6 +275,13 @@ def shell():
             elif shell_input in [f"{cmd_for_config} -exit"]:
                 print(f"{GREEN}[DKP Shell] : Fermeture{RESET}")
                 sys.exit(0)
+
+            elif shell_input in [f"{cmd_for_config.replace('config', 'tool')} --help",f"{cmd_for_config.replace('config', 'tool')}" ]:
+                print("Menu Osint: dkptool -e MenuOsint")
+
+            elif shell_input == f"{cmd_for_config.replace('config', 'tool')} -e MenuOsint":
+                OsintMenu()
+                
 
 
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
