@@ -321,7 +321,22 @@ def shell():
                 OsintMenu()
 
             elif shell_input == f"{cmd_for_config} -color config":
-                color_config()
+                print(f'''{RED}RED 
+{GREEN}GREEN
+{YELLOW}YELLOW 
+{CYAN}CYAN 
+{MAGENTA}MAGENTA 
+{RESET}RESET 
+{BOLD}BOLD 
+{BLUE}BLUE 
+{ORANGE}ORANGE ''')
+                print("mettait EXACTEMENT le nom des variables")
+                A_color = input("")
+                B_color = input("")
+                C_color = input("")
+                D_color = input("")
+                E_color = input("")
+                shell_input1 = input(f"{A_color}┌──({B_color}{custom_prompt}{C_color}{root_state}{D_color}{user})-[{E_color}~]\n└─[ {RESET}")
                 
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
                 print(f"{CYAN}[DKP Shell] : Mise à jour en cours...{RESET}")
