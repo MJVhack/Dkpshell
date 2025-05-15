@@ -70,7 +70,7 @@ readline.set_completion_display_matches_hook(
 
 def completer(text, state):
     matches = [cmd for cmd in dkp_commands if cmd.startswith(text)]
-    return matches[state] if state < len(matches) else Non
+    return matches[state] if state < len(matches) else None
 
 readline.set_completer(completer)
 
