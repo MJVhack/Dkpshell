@@ -178,6 +178,7 @@ ascii_art = fr"""{CYAN}
 os.system("clear")
 print(ascii_art)
 check_update()
+print("")
 print(f"{YELLOW}💡 Tips: Lancer en sudo pour accéder à toutes les fonctionnalités.\n{RESET}")
 
 # État Root
