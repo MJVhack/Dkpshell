@@ -10,7 +10,7 @@ import rlcompleter
 import subprocess
 import re
 
-prompt_color = "BLUE"
+prompt_color = BLUE
 
 __version__ = "2.7"
 RED = "\033[91m"
