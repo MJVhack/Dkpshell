@@ -10,7 +10,7 @@ import rlcompleter
 import subprocess
 import re
 
-__version__ = "2.5"
+__version__ = "2.6"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -59,18 +59,32 @@ dkp_commands = [
     f"{cmd_for_config} -exit"
 ]
 
+
 readline.parse_and_bind("tab: complete")
 readline.parse_and_bind("set show-all-if-ambiguous off")
 readline.parse_and_bind("set completion-query-items 100")
 readline.set_completer_delims(" \t\n")
+
 readline.set_completion_display_matches_hook(
     lambda substitution, matches, longest_match_length:
         print("\n" + "\n".join(matches))
 )
 
 def completer(text, state):
-    matches = [cmd for cmd in dkp_commands if cmd.startswith(text)]
-    return matches[state] if state < len(matches) else None
+    # Ligne complète tapée jusqu’à maintenant
+    current_line = readline.get_line_buffer()
+
+    # Suggestions contenant le texte n'importe où
+    matches = [cmd for cmd in dkp_commands if text in cmd]
+
+    if state < len(matches):
+        # Supprime la ligne tapée et la remplace par la suggestion entière
+        readline.delete_text(0, len(current_line))
+        readline.insert_text(matches[state])
+        readline.redisplay()
+        return matches[state]
+    else:
+        return None
 
 readline.set_completer(completer)
 
