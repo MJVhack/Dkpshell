@@ -7,8 +7,9 @@ import readline
 import atexit
 import sys
 import rlcompleter
+import subprocess
 
-__version__ = "1.1.2.1"
+__version__ = "2.2.2.1"
 
 def check_update():
     try:
@@ -79,6 +80,73 @@ ORANGE = "\033[38;5;208m"
 def is_root():
     return os.geteuid() == 0
 
+def OsintMenu():
+
+
+    def menu():
+        print(f"{MAGENTA}\n=== QG OSINT - Interface Terminal BY SA |Timeline ===")
+        print("")
+        print(f"{YELLOW}Lancez en sudo pour installer les modules{RESET}")
+        print("")
+        print(f"{BLUE}[1] Sherlock (Username Search)")
+        print(f"[2] Linkook (Social Link OSINT)")
+        print(f"[3] Holehe (Email Verification)")
+        print(f"[4] Nmap (Scan réseau)")
+        print(f"[5] SQLMap (Injection SQL)")
+        print(f"[6] Installer (Si aucun module est present ou manque un")
+        print(f"[0] Quitter{RESET}")
+        return input("Choisis une option > ")
+
+    def run_sherlock():
+        username = input("Entrez le pseudo à chercher : ")
+        subprocess.run(f'cd ~/sherlock/sherlock_project && python3 sherlock.py {username}', shell=True)
+
+    def run_linkook():
+        username = input("Entrez le pseudo à chercher (Linkook) : ")
+        subprocess.run(f'~/.local/share/pipx/venvs/linkook/bin/linkook {username}', shell=True)
+
+    def run_holehe():
+        email = input("Entrez l'adresse email : ")
+        subprocess.run(f'holehe {email}', shell=True)
+
+    def run_nmap():
+        target = input("Entrez l'adresse IP ou domaine : ")
+        subprocess.run(f'nmap -sV -T4 -Pn --script vuln {target}', shell=True)
+
+    def run_sqlmap():
+        url = input("Entrez l'URL vulnérable (avec paramètre) : ")
+        subprocess.run(f'sqlmap -u "{url}" --batch --level=3 --risk=2', shell=True)
+
+    def install_all():
+        os.system("sudo apt install sherlock")
+        print(f"{GREEN}Sherlock succeful installed{RESET}")
+        os.system("pipx install linkook")
+        print(f"{GREEN}Linkook succeful installed{RESET}")
+        os.system("git clone https://github.com/megadose/holehe.git && cd holehe/ && python3 setup.py install")
+        print(f"{GREEN}Holehe succeful installed{RESET}")
+        os.system("sudo apt install nmap")
+        print(f"{GREEN}Nmap succeful installed{RESET}")
+        os.system("sudo apt install sqlmap")
+        print(f"{GREEN}Sqlmap succeful installed{RESET}")
+
+# Boucle principale
+    while True:
+        choice = menu()
+        if choice == "1":
+            run_sherlock()
+        elif choice == "2":
+            run_linkook()
+        elif choice == "3":
+            run_holehe()
+        elif choice == "4":
+            run_nmap()
+        elif choice == "5":
+            run_sqlmap()
+        elif choice == "0":
+            print("Fermeture du QG OSINT. Timeline By SA")
+            break
+        else:
+            print("Choix invalide.")
 
 
 # Affichage ASCII Art
