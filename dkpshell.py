@@ -8,6 +8,25 @@ import atexit
 import sys
 import rlcompleter
 
+__version__ = "1.1"
+
+def check_update():
+    try:
+        url = "https://raw.githubusercontent.com/MJVhack/MJVhack/main/dkpshell.py"
+        with urllib.request.urlopen(url) as response:
+            remote_code = response.read().decode("utf-8")
+        
+        # Cherche la version dans le fichier distant
+        match = re.search(r'__version__\s*=\s*"(\d+\.\d+)"', remote_code)
+        if match:
+            remote_version = match.group(1)
+            if remote_version > __version__:
+                print(f"\033[93m[DKP Shell] : Une mise à jour est disponible ({__version__} → {remote_version})")
+                print("➜ Lance la commande `dkpupdate` pour mettre à jour.\033[0m")
+    except Exception as e:
+        print(f"\033[91m[DKP Shell] : Échec de vérification de mise à jour : {e}\033[0m")
+check_version()
+
 histfile = os.path.expanduser("~/.dkpshell_history")
 readline.read_history_file(histfile) if os.path.exists(histfile) else None
 atexit.register(readline.write_history_file, histfile)
@@ -217,7 +236,7 @@ def shell():
                 
 
             else:
-                print(f"{RED}Commande non reconnu en tant que commande {MAGENTA} [DKP]")
+                print(f"{RED}Commande non reconnu en tant que commande {MAGENTA}[DKP]")
                 print(f"{YELLOW}")
                 os.system(shell_input)
             continue
