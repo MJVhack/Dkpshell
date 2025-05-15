@@ -35,7 +35,6 @@ def check_update():
                 print("{CYAN}➜ Lance la commande `dkpupdate` pour mettre à jour{RESET}")
     except Exception as e:
         print(f"{RED}[DKP Shell] : Échec de vérification de mise à jour : {e}\033[0m")
-check_update()
 
 histfile = os.path.expanduser("~/.dkpshell_history")
 readline.read_history_file(histfile) if os.path.exists(histfile) else None
@@ -176,6 +175,7 @@ ascii_art = fr"""{CYAN}
 """
 os.system("clear")
 print(ascii_art)
+check_update()
 print(f"{YELLOW}💡 Tips: Lancer en sudo pour accéder à toutes les fonctionnalités.\n{RESET}")
 
 # État Root
