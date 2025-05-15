@@ -8,7 +8,7 @@ import atexit
 import sys
 import rlcompleter
 
-__version__ = "1.1.0.1"
+__version__ = "1.1.1.1"
 
 def check_update():
     try:
@@ -51,6 +51,8 @@ dkp_commands = [
 ]
 
 readline.parse_and_bind("tab: complete")
+readline.parse_and_bind("set show-all-if-ambiguous off")
+readline.parse_and_bind("set completion-query-items 100")
 readline.set_completer_delims(" \t\n")
 readline.set_completion_display_matches_hook(
     lambda substitution, matches, longest_match_length:
