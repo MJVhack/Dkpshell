@@ -8,7 +8,7 @@ import atexit
 import sys
 import rlcompleter
 
-__version__ = "1.1.1.1"
+__version__ = "1.1.2.1"
 
 def check_update():
     try:
@@ -21,11 +21,11 @@ def check_update():
         if match:
             remote_version = match.group(1)
             if remote_version > __version__:
-                print(f"\033[93m[DKP Shell] : Une mise à jour est disponible ({__version__} → {remote_version})")
-                print("➜ Lance la commande `dkpupdate` pour mettre à jour.\033[0m")
+                print(f"{MAGENTA}[DKP Shell] : Une mise à jour est disponible ({__version__} → {remote_version}){RESET}")
+                print("{CYAN}➜ Lance la commande `dkpupdate` pour mettre à jour{RESET}")
     except Exception as e:
-        print(f"\033[91m[DKP Shell] : Échec de vérification de mise à jour : {e}\033[0m")
-check_version()
+        print(f"{RED}[DKP Shell] : Échec de vérification de mise à jour : {e}\033[0m")
+check_update()
 
 histfile = os.path.expanduser("~/.dkpshell_history")
 readline.read_history_file(histfile) if os.path.exists(histfile) else None
