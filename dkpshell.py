@@ -14,7 +14,7 @@ import asyncio
 from discord.ext import commands
 
 
-__version__ = "3.0"
+__version__ = "3.1"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -357,6 +357,7 @@ def shell():
                 raid_discord()
 
             elif shell_input in [f"{cmd_for_config} -installall"]:
+                install_all()
                 
                 
             elif shell_input in [f"{cmd_for_config} -restartshell"]:
