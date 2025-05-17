@@ -40,6 +40,7 @@ def raid_discord():
     Effectue un raid sur un serveur Discord avec les options de renommage et de création de salons, et inclut une option de spam.
     """
     # INPUT UTILISATEUR
+    print(f"{RED}!IMPORTANT!: Je ne suis pas responsable de ce que vous faites avec cette outils, lisez les regles de discord avant de les utiliser.")
     token = input(f"{JAUNE}🔑 Entrez le token du bot Discord: {RESET}")
     guild_id_input = int(input(f"{BLEU}🆔 Entrez l'ID du serveur cible : {RESET}"))
     noms_renommage_str = input(f"{JAUNE}✏️ Entrez les noms pour renommer les salons (séparés par des virgules): {RESET}")
