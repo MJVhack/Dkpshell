@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+cmd_for_config = "dkpconfig"
 import os
 import getpass
 import shutil
@@ -104,7 +105,7 @@ histfile = os.path.expanduser("~/.dkpshell_history")
 readline.read_history_file(histfile) if os.path.exists(histfile) else None
 atexit.register(readline.write_history_file, histfile)
 
-cmd_for_config = "dkpconfig"
+
 
 dkp_commands = [
     f"{cmd_for_config} -color red"
