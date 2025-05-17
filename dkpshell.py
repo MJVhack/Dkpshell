@@ -14,11 +14,12 @@ import rlcompleter
 import subprocess
 import re
 try:
-    import discord.py
+    import discord
+    from discord.ext import commands
 except ImportError:
     print(f"Discord.py is not installed, use {cmd_for_config} -installall")
 import asyncio
-from discord.ext import commands
+
 
 
 __version__ = "3.3"
