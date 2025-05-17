@@ -378,7 +378,7 @@ def shell():
             elif shell_input in [f"{cmd_for_config} -color orange"]:
                  shell_input = input(f"{ORANGE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
-            elif shell_input in [f"{cmd_for_config.replace("config", "tool")} -e RaidDiscordBT"]:
+            elif shell_input in [f"{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD"]:
                 raid_discord()
 
             elif shell_input in [f"{cmd_for_config} -installall"]:
