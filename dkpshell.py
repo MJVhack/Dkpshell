@@ -250,7 +250,7 @@ def install_all():
 updlist = f"""{YELLOW}NEW ADD{BLUE}
 [+] add '{cmd_for_config} -installall', '{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD', '{cmd_for_config} -updlist'
     [*]{cmd_for_config} -installall: Avant pour installer les modules, il fallait lancer Osint Menu, plus maintenant. Desormais meme les modules pour {MAGENTA}[dkpshell.py]{BLUE} sont installer et update via {cmd_for_config} -installall
-    [*]{cmd_for_config.replace("config", tool)} -e RaidDiscordBD: Permet de lancer le nnouveau module 'raid_discord' V1 avec IMPERATIVEMENT un token de bot DISCORD
+    [*]{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD: Permet de lancer le nnouveau module 'raid_discord' V1 avec IMPERATIVEMENT un token de bot DISCORD
     [*]{cmd_for_config} -updlist: réaffiche ce que vous lisez maintenant
 [+]add 'The Update list'
     [*]The Update List: Ce que vous lisez maintenant
