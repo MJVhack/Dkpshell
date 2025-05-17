@@ -13,7 +13,10 @@ import sys
 import rlcompleter
 import subprocess
 import re
-import discord.py
+try:
+    import discord.py
+except ImportError:
+    print(f"Discord.py is not installed, use {cmd_for_config} -installall")
 import asyncio
 from discord.ext import commands
 
