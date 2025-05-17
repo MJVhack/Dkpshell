@@ -68,16 +68,16 @@ def raid_discord():
                 await channel.send(message)
                 await asyncio.sleep(1)  # Délai d'une seconde pour éviter les limitations de débit
             except Exception as e:
-                print(f"{ROUGE}⚠️ Erreur lors de l'envoi du message de spam : {e}{RESET}")
+                print(f"{RED}⚠️ Erreur lors de l'envoi du message de spam : {e}{RESET}")
                 break
 
     @bot.event
     async def on_ready():
-        print(f"{VERT}✅ Connecté en tant que {bot.user}{RESET}")
+        print(f"{GREEN}✅ Connecté en tant que {bot.user}{RESET}")
         guild = bot.get_guild(guild_id_input)
 
         if guild is None:
-            print(f"{ROUGE}❌ Le bot n'est pas dans ce serveur ou l'ID est invalide.{RESET}")
+            print(f"{RED}❌ Le bot n'est pas dans ce serveur ou l'ID est invalide.{RESET}")
             await bot.close()
             return
 
@@ -94,7 +94,7 @@ def raid_discord():
                 nouveau_nom = f"{nom_nouveaux_salons}-{i}"
             try:
                 await salon.edit(name=nouveau_nom)
-                print(f"{VERT}🔁 Salon renommé: {salon.name} -> {nouveau_nom}{RESET}")
+                print(f"{GREEN}🔁 Salon renommé: {salon.name} -> {nouveau_nom}{RESET}")
             except Exception as e:
                 print(f"{ORANGE}⚠️ Erreur lors du renommage de {salon.name}: {e}{RESET}")
 
@@ -102,24 +102,24 @@ def raid_discord():
         for i in range(nombre_de_salons):
             try:
                 nouveau_salon = await guild.create_text_channel(f"{nom_nouveaux_salons}-{i}")
-                print(f"{VERT}➕ Salon créé: {nouveau_salon.name}{RESET}")
+                print(f"{GREEN}➕ Salon créé: {nouveau_salon.name}{RESET}")
             except Exception as e:
-                print(f"{ROUGE}⚠️ Erreur création salon: {e}{RESET}")
+                print(f"{RED}⚠️ Erreur création salon: {e}{RESET}")
 
         # Spam de messages
         if spam_message_str and nombre_de_spams > 0:
             for channel in guild.text_channels:
                 await spam_message(channel, spam_message_str, nombre_de_spams)
 
-        print(f"{VERT}✅ Raid terminé. Déconnexion du bot.{RESET}")
+        print(f"{GREEN}✅ Raid terminé. Déconnexion du bot.{RESET}")
         await bot.close()
 
     try:
         bot.run(token)
     except discord.errors.LoginFailure as e:
-        print(f"{ROUGE}❌ Erreur : Token Discord invalide. Veuillez vérifier votre token.  Erreur détaillée: {e}{RESET}")
+        print(f"{RED}❌ Erreur : Token Discord invalide. Veuillez vérifier votre token.  Erreur détaillée: {e}{RESET}")
     except Exception as e:
-        print(f"{ROUGE}Une erreur inattendue s'est produite : {e}{RESET}")
+        print(f"{RED}Une erreur inattendue s'est produite : {e}{RESET}")
 
 
 
