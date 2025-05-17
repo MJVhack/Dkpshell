@@ -33,7 +33,7 @@ BOLD = "\033[1m"
 BLUE = "\033[94m"
 ORANGE = "\033[38;5;208m"
 
-prompt_color = BLUE
+prompt_color = str(BLUE)
 
 def raid_discord():
     # INPUT UTILISATEUR
