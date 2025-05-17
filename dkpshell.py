@@ -22,7 +22,7 @@ import asyncio
 
 
 
-__version__ = "3.3"
+__version__ = "3.4"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -33,7 +33,6 @@ BOLD = "\033[1m"
 BLUE = "\033[94m"
 ORANGE = "\033[38;5;208m"
 
-prompt_color = str(BLUE)
 
 def raid_discord():
     # INPUT UTILISATEUR
@@ -258,7 +257,8 @@ updlist = f"""{YELLOW}NEW ADD{BLUE}
 [!] point:
     [*]'{cmd_for_config} -color config' est toujours en maintenance et pour un bon moment
     [*]'Le tab est toujours bugué et va être supprimer dans la nouvelle mise a jour
-    [*]L'Update List sera reset que tout les 2 update MAJEURES (2.0 -> 2.1: non majeure; 2.0 -> 3.0: majeure) entre temps seulement des choses seront RAJOUTER a l'Update List"""
+    [*]L'Update List sera reset que tout les 2 update MAJEURES (2.0 -> 2.1: non majeure; 2.0 -> 3.0: majeure) entre temps seulement des choses seront RAJOUTER a l'Update List
+    [*]Le bug des commandes hors dkp qui crash est réglé (retour a une version antérieur)"""
 # Affichage ASCII Art
 ascii_art = fr"""{CYAN}
 <!-- .------------------------------------------------------------------------------------------------. -->
@@ -351,31 +351,31 @@ def shell():
                  ORANGE = {cmd_for_config} -color orange''')
                  continue
             elif shell_input in [f"{cmd_for_config} -color red"]:
-                 prompt_color = RED
+                 shell_input = input(f"{RED}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
             elif shell_input in [f"{cmd_for_config} -color green"]:
-                 prompt_color = GREEN
+                 shell_input = input(f"{GREEN}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
             elif shell_input in [f"{cmd_for_config} -color yellow"]:
-                 prompt_color = YELLOW
+                 shell_input = input(f"{YELLOW}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
             elif shell_input in [f"{cmd_for_config} -color cyan"]:
-                 prompt_color = CYAN
+                 shell_input = input(f"{CYAN}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
             elif shell_input in [f"{cmd_for_config} -color magenta"]:
-                 prompt_color = MAGENTA
+                 shell_input = input(f"{MAGENTA}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
             elif shell_input in [f"{cmd_for_config} -color white"]:
-                 prompt_color = RESET
+                 shell_input = input(f"{WHITE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
             elif shell_input in [f"{cmd_for_config} -color bold"]:
-                 prompt_color = BOLD
+                 shell_input = input(f"{BOLD}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
             elif shell_input in [f"{cmd_for_config} -color blue"]:
-                 prompt_color = BLUE
+                 shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
             elif shell_input in [f"{cmd_for_config} -color orange"]:
-                 prompt_color = ORANGE
+                 shell_input = input(f"{ORANGE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                  continue
             elif shell_input in [f"{cmd_for_config.replace("config", "tool")} -e RaidDiscordBT"]:
                 raid_discord()
@@ -443,7 +443,7 @@ def shell():
                 
 
             else:
-                shell_input = input(f"{prompt_color}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                 print(f"{RED}Commande non reconnu en tant que commande {MAGENTA}[DKP]")
                 print(f"{YELLOW}")
                 os.system(shell_input)
