@@ -3,18 +3,22 @@ import os
 import getpass
 import shutil
 import urllib.request
-import readline
+try:
+    import readline
+except ImportError:
+    import pyreadline3 as readline
+
 import atexit
 import sys
 import rlcompleter
 import subprocess
 import re
-import discord
+import discord.py
 import asyncio
 from discord.ext import commands
 
 
-__version__ = "3.2"
+__version__ = "3.3"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -223,6 +227,10 @@ def OsintMenu():
             print("Choix invalide.")
 
 def install_all():
+    os.system("pip install -U Pyreadline3")
+    print(f"{GREEN}Pyreadline3 succesful installed")
+    os.system("pip install -U discord.py")
+    print(f"{GREEN}Discord.py succesful installed")
     os.system("sudo apt install sherlock")
     print(f"{GREEN}Sherlock succeful installed{RESET}")
     os.system("pipx install linkook")
@@ -230,11 +238,11 @@ def install_all():
     os.system("git clone https://github.com/megadose/holehe.git && cd holehe/ && python3 setup.py install")
     print(f"{GREEN}Holehe succeful installed{RESET}")
     os.system("sudo apt install nmap")
-    print(f"{GREEN}Nmap succeful installed{RESET}")
+    print(f"{GREEN}Nmap succesful installed{RESET}")
     os.system("sudo apt install sqlmap")
-    print(f"{GREEN}Sqlmap succeful installed{RESET}")
+    print(f"{GREEN}Sqlmap succesful installed{RESET}")
     os.system("pip install discord.py")
-    print(f"{GREEN}Discord.py succceful installed{RESET}")
+    print(f"{GREEN}Discord.py succcesful installed{RESET}")
 
 updlist = f"""{YELLOW}NEW ADD{BLUE}
 [+] add '{cmd_for_config} -installall', '{cmd_for_config.replace("config", tool)} -e RaidDiscordBD', '{cmd_for_config} -updlist'
@@ -246,7 +254,7 @@ updlist = f"""{YELLOW}NEW ADD{BLUE}
 [!] point:
     [*]'{cmd_for_config} -color config' est toujours en maintenance et pour un bon moment
     [*]'Le tab est toujours bugué et va être supprimer dans la nouvelle mise a jour
-    [*]L'Update List sera reset que tout les 2 update MAJEURES (2.0 -> 2.1: non majeure; 2.0 -> 3.0: majeure) entre temps seulement des choses seront RAJOUTER a l'Update List""""
+    [*]L'Update List sera reset que tout les 2 update MAJEURES (2.0 -> 2.1: non majeure; 2.0 -> 3.0: majeure) entre temps seulement des choses seront RAJOUTER a l'Update List"""
 # Affichage ASCII Art
 ascii_art = fr"""{CYAN}
 <!-- .------------------------------------------------------------------------------------------------. -->
