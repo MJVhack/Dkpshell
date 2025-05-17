@@ -23,7 +23,7 @@ import asyncio
 
 
 
-__version__ = "3.7"
+__version__ = "3.8"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -137,10 +137,8 @@ def check_update():
             if remote_version > __version__:
                 print(f"{MAGENTA}[DKP Shell] : Une mise à jour est disponible ({__version__} → {remote_version}){RESET}")
                 print(f"{CYAN}➜ Lance la commande `dkpupdate` pour mettre à jour{RESET}")
-        print(f"{ROUGE}❌ Erreur : Token Discord invalide. Veuillez vérifier votre token.  Erreur détaillée: {e}{RESET}")
     except Exception as e:
         print(f"{RED}[DKP Shell] : Échec de vérification de mise à jour : {e}\033[0m")
-        print(f"{ROUGE}Une erreur inattendue s'est produite : {e}{RESET}")
         
 
 histfile = os.path.expanduser("~/.dkpshell_history")
@@ -304,8 +302,11 @@ updlist = f"""{YELLOW}NEW ADD{BLUE}
     [*]L'Update List sera reset que tout les 2 update MAJEURES (2.0 -> 2.1: non majeure; 2.0 -> 3.0: majeure) entre temps seulement des choses seront RAJOUTER a l'Update List
     [*]Le bug des commandes hors dkp qui crash est réglé (retour a une version antérieur)
 -----------------3.5--------------
-[+]bugs:
-    [*]Bug de la commande '{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD', un enfer."""
+[!]bugs:
+    [*]Bug de la commande '{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD', un enfer.
+----------3.8----------------
+[!]bugs:
+    [*]bug a cause de gemini, très difficile"""
 # Affichage ASCII Art
 ascii_art = fr"""{CYAN}
 <!-- .------------------------------------------------------------------------------------------------. -->
