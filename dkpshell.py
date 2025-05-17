@@ -443,7 +443,6 @@ def shell():
                 
 
             else:
-                shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
                 print(f"{RED}Commande non reconnu en tant que commande {MAGENTA}[DKP]")
                 print(f"{YELLOW}")
                 os.system(shell_input)
