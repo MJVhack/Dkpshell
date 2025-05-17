@@ -121,6 +121,28 @@ def raid_discord():
     except Exception as e:
         print(f"{ROUGE}Une erreur inattendue s'est produite : {e}{RESET}")
 
+
+
+
+def check_update():
+    try:
+        url = "https://raw.githubusercontent.com/MJVhack/MJVhack/main/dkpshell.py"
+        with urllib.request.urlopen(url) as response:
+            remote_code = response.read().decode("utf-8")
+        
+        # Cherche la version dans le fichier distant
+        match = re.search(r'__version__\s*=\s*"(\d+\.\d+)"', remote_code)
+        if match:
+            remote_version = match.group(1)
+            if remote_version > __version__:
+                print(f"{MAGENTA}[DKP Shell] : Une mise à jour est disponible ({__version__} → {remote_version}){RESET}")
+                print(f"{CYAN}➜ Lance la commande `dkpupdate` pour mettre à jour{RESET}")
+        print(f"{ROUGE}❌ Erreur : Token Discord invalide. Veuillez vérifier votre token.  Erreur détaillée: {e}{RESET}")
+    except Exception as e:
+        print(f"{RED}[DKP Shell] : Échec de vérification de mise à jour : {e}\033[0m")
+        print(f"{ROUGE}Une erreur inattendue s'est produite : {e}{RESET}")
+        
+
 histfile = os.path.expanduser("~/.dkpshell_history")
 readline.read_history_file(histfile) if os.path.exists(histfile) else None
 atexit.register(readline.write_history_file, histfile)
