@@ -40,25 +40,25 @@ def raid_discord():
     Effectue un raid sur un serveur Discord avec les options de renommage de salons et de création de nouveaux salons.
     """
     # INPUT UTILISATEUR
-    token = input(f"{JAUNE}🔑 Entrez le token du bot Discord: {RESET}")
-    guild_id_input = int(input(f"{BLEU}🆔 Entrez l'ID du serveur cible : {RESET}")) # Demande l'ID ici
-    noms_renommage_str = input(f"✏️ Entrez les noms pour renommer les salons (séparés par des virgules): {RESET}")
+    token = input(f"{YELLOW}🔑 Entrez le token du bot Discord: {RESET}")
+    guild_id_input = int(input(f"{YELLOW}🆔 Entrez l'ID du serveur cible : {RESET}")) # Demande l'ID ici
+    noms_renommage_str = input(f"{YELLOW}✏️ Entrez les noms pour renommer les salons (séparés par des virgules): {RESET}")
     noms_renommage = [n.strip() for n in noms_renommage_str.split(",") if n.strip()]
 
-    nom_nouveaux_salons = input(f"📛 Nom des nouveaux salons à créer: {RESET}").strip()
-    nombre_de_salons = int(input(f"🔢 Combien de nouveaux salons créer ? {RESET}"))
+    nom_nouveaux_salons = input(f"{ORANGE}📛 Nom des nouveaux salons à créer: {RESET}").strip()
+    nombre_de_salons = int(input(f"{ORANGE}🔢 Combien de nouveaux salons créer ? {RESET}"))
 
     intents = discord.Intents.all()
     bot = commands.Bot(command_prefix="!", intents=intents)
 
     @bot.event
     async def on_ready():
-        print(f"{VERT}✅ Connecté en tant que {bot.user}{RESET}")
+        print(f"{GREEN}✅ Connecté en tant que {bot.user}{RESET}")
 
         guild = bot.get_guild(guild_id_input)
 
         if guild is None:
-            print(f"{ROUGE}❌ Le bot n'est pas dans ce serveur ou l'ID est invalide.{RESET}")
+            print(f"{RED}❌ Le bot n'est pas dans ce serveur ou l'ID est invalide.{RESET}")
             await bot.close()
             return
 
@@ -76,7 +76,7 @@ def raid_discord():
                 nouveau_nom = f"{nom_nouveaux_salons}-{i}"
             try:
                 await salon.edit(name=nouveau_nom)
-                print(f"{VERT}🔁 Salon renommé: {salon.name} -> {nouveau_nom}{RESET}")
+                print(f"{GREEN}🔁 Salon renommé: {salon.name} -> {nouveau_nom}{RESET}")
             except Exception as e:
                 print(f"{ORANGE}⚠️ Erreur lors du renommage de {salon.name}: {e}{RESET}")
 
@@ -84,19 +84,19 @@ def raid_discord():
         for i in range(nombre_de_salons):
             try:
                 nouveau_salon = await guild.create_text_channel(f"{nom_nouveaux_salons}-{i}")
-                print(f"{VERT}➕ Salon créé: {nouveau_salon.name}{RESET}")
+                print(f"{GREEN}➕ Salon créé: {nouveau_salon.name}{RESET}")
             except Exception as e:
-                print(f"{ROUGE}⚠️ Erreur création salon: {e}{RESET}")
+                print(f"{RED}⚠️ Erreur création salon: {e}{RESET}")
 
-        print(f"{VERT}✅ Raid terminé. Déconnexion du bot.{RESET}")
+        print(f"{GREEN}✅ Raid terminé. Déconnexion du bot.{RESET}")
         await bot.close()
 
     try:
         bot.run(token)
     except discord.errors.LoginFailure as e:
-        print(f"{ROUGE}❌ Erreur : Token Discord invalide. Veuillez vérifier votre token.  Erreur détaillée: {e}{RESET}")
+        print(f"{RED}❌ Erreur : Token Discord invalide. Veuillez vérifier votre token.  Erreur détaillée: {e}{RESET}")
     except Exception as e:
-        print(f"{ROUGE}Une erreur inattendue s'est produite : {e}{RESET}")
+        print(f"{RED}Une erreur inattendue s'est produite : {e}{RESET}")
 
 
 
@@ -264,6 +264,7 @@ def install_all():
     print(f"{GREEN}Discord.py succcesful installed{RESET}")
 
 updlist = f"""{YELLOW}NEW ADD{BLUE}
+--------------3.0--------------------
 [+] add '{cmd_for_config} -installall', '{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD', '{cmd_for_config} -updlist'
     [*]{cmd_for_config} -installall: Avant pour installer les modules, il fallait lancer Osint Menu, plus maintenant. Desormais meme les modules pour {MAGENTA}[dkpshell.py]{BLUE} sont installer et update via {cmd_for_config} -installall
     [*]{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD: Permet de lancer le nnouveau module 'raid_discord' V1 avec IMPERATIVEMENT un token de bot DISCORD
@@ -274,7 +275,10 @@ updlist = f"""{YELLOW}NEW ADD{BLUE}
     [*]'{cmd_for_config} -color config' est toujours en maintenance et pour un bon moment
     [*]'Le tab est toujours bugué et va être supprimer dans la nouvelle mise a jour
     [*]L'Update List sera reset que tout les 2 update MAJEURES (2.0 -> 2.1: non majeure; 2.0 -> 3.0: majeure) entre temps seulement des choses seront RAJOUTER a l'Update List
-    [*]Le bug des commandes hors dkp qui crash est réglé (retour a une version antérieur)"""
+    [*]Le bug des commandes hors dkp qui crash est réglé (retour a une version antérieur)
+-----------------3.5--------------
+[+]bugs:
+    [*]Bug de la commande '{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD', un enfer."""
 # Affichage ASCII Art
 ascii_art = fr"""{CYAN}
 <!-- .------------------------------------------------------------------------------------------------. -->
