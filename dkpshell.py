@@ -14,7 +14,7 @@ import asyncio
 from discord.ext import commands
 
 
-__version__ = "3.1"
+__version__ = "3.2"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -236,7 +236,17 @@ def install_all():
     os.system("pip install discord.py")
     print(f"{GREEN}Discord.py succceful installed{RESET}")
 
-
+updlist = f"""{YELLOW}NEW ADD{BLUE}
+[+] add '{cmd_for_config} -installall', '{cmd_for_config.replace("config", tool)} -e RaidDiscordBD', '{cmd_for_config} -updlist'
+    [*]{cmd_for_config} -installall: Avant pour installer les modules, il fallait lancer Osint Menu, plus maintenant. Desormais meme les modules pour {MAGENTA}[dkpshell.py]{BLUE} sont installer et update via {cmd_for_config} -installall
+    [*]{cmd_for_config.replace("config", tool)} -e RaidDiscordBD: Permet de lancer le nnouveau module 'raid_discord' V1 avec IMPERATIVEMENT un token de bot DISCORD
+    [*]{cmd_for_config} -updlist: réaffiche ce que vous lisez maintenant
+[+]add 'The Update list'
+    [*]The Update List: Ce que vous lisez maintenant
+[!] point:
+    [*]'{cmd_for_config} -color config' est toujours en maintenance et pour un bon moment
+    [*]'Le tab est toujours bugué et va être supprimer dans la nouvelle mise a jour
+    [*]L'Update List sera reset que tout les 2 update MAJEURES (2.0 -> 2.1: non majeure; 2.0 -> 3.0: majeure) entre temps seulement des choses seront RAJOUTER a l'Update List""""
 # Affichage ASCII Art
 ascii_art = fr"""{CYAN}
 <!-- .------------------------------------------------------------------------------------------------. -->
@@ -383,6 +393,9 @@ def shell():
 
             elif shell_input == f"{cmd_for_config} -color config":
                 print("Cette option a été momontanément désactiver.")
+
+            elif shell_input == f"{cmd_for_config} -updlist":
+                print(updlist)
                 
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
                 print(f"{CYAN}[DKP Shell] : Mise à jour en cours...{RESET}")
