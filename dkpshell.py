@@ -381,7 +381,7 @@ def shell():
     try:
         while True:
             print("")
-            shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+            input(shell_input)
             if shell_input in [f"{cmd_for_config}", f"{cmd_for_config} --help"]:
                 print(f"{MAGENTA}DKPSHELL help")
                 print("")
