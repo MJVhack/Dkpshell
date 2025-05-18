@@ -23,7 +23,7 @@ import asyncio
 
 
 
-__version__ = "3.8"
+__version__ = "3.9"
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -42,8 +42,8 @@ def raid_discord():
     # INPUT UTILISATEUR
     print(f"{RED}!IMPORTANT!: Je ne suis pas responsable de ce que vous faites avec cette outils, lisez les regles de discord avant de les utiliser.")
     token = input(f"{YELLOW}🔑 Entrez le token du bot Discord: {RESET}")
-    guild_id_input = int(input(f"{BLEU}🆔 Entrez l'ID du serveur cible : {RESET}"))
-    noms_renommage_str = input(f"{JAUNE}✏️ Entrez les noms pour renommer les salons (séparés par des virgules): {RESET}")
+    guild_id_input = int(input(f"{BLUE}🆔 Entrez l'ID du serveur cible : {RESET}"))
+    noms_renommage_str = input(f"{YELLOW}✏️ Entrez les noms pour renommer les salons (séparés par des virgules): {RESET}")
     noms_renommage = [n.strip() for n in noms_renommage_str.split(",") if n.strip()]
     nom_nouveaux_salons = input(f"{ORANGE}📛 Nom des nouveaux salons à créer: {RESET}").strip()
     nombre_de_salons = int(input(f"{ORANGE}🔢 Combien de nouveaux salons créer ? {RESET}"))
@@ -307,7 +307,10 @@ updlist = f"""{YELLOW}NEW ADD{BLUE}
     [*]Bug de la commande '{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD', un enfer.
 ----------3.8----------------
 [!]bugs:
-    [*]bug a cause de gemini, très difficile"""
+    [*]bug a cause de gemini, très difficile
+------------3.9----------
+[!]bugs
+     [*]Resolu le bug des variables dans raid_discord"""
 # Affichage ASCII Art
 ascii_art = fr"""{CYAN}
 <!-- .------------------------------------------------------------------------------------------------. -->
