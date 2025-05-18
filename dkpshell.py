@@ -375,13 +375,14 @@ if is_root():
 else:
         start = input(f"{MAGENTA}\nTapez 'start' pour lancer le DKP Shell : {RESET}").strip().lower()
 
-shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+
 
 
 def shell():
     user = getpass.getuser()
     root_state = "{ROOTED}" if is_root() else "{USER}"
     try:
+        shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
         while True:
             print("")
             input(shell_input)
