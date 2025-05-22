@@ -35,6 +35,7 @@ BLUE = "\033[94m"
 ORANGE = "\033[38;5;208m"
 
 
+prompt_color = BLUE
 def raid_discord():
     """
     Effectue un raid sur un serveur Discord avec les options de renommage et de création de salons, et inclut une option de spam.
@@ -382,10 +383,10 @@ def shell():
     user = getpass.getuser()
     root_state = "{ROOTED}" if is_root() else "{USER}"
     try:
-        shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
         while True:
             print("")
-            input(shell_input)
+            shell_input = input(f"{prompt_color}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+            print("")
             if shell_input in [f"{cmd_for_config}", f"{cmd_for_config} --help"]:
                 print(f"{MAGENTA}DKPSHELL help")
                 print("")
@@ -407,31 +408,31 @@ def shell():
                  ORANGE = {cmd_for_config} -color orange''')
                  continue
             elif shell_input in [f"{cmd_for_config} -color red"]:
-                 shell_input = input(f"{RED}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = RED
                  continue
             elif shell_input in [f"{cmd_for_config} -color green"]:
-                 shell_input = input(f"{GREEN}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = GREEN
                  continue
             elif shell_input in [f"{cmd_for_config} -color yellow"]:
-                 shell_input = input(f"{YELLOW}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = YELLOW
                  continue
             elif shell_input in [f"{cmd_for_config} -color cyan"]:
-                 shell_input = input(f"{CYAN}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = CYAN
                  continue
             elif shell_input in [f"{cmd_for_config} -color magenta"]:
-                 shell_input = input(f"{MAGENTA}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+             prompt_color = MAGENTA
                  continue
             elif shell_input in [f"{cmd_for_config} -color white"]:
-                 shell_input = input(f"{WHITE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = WHITE
                  continue
             elif shell_input in [f"{cmd_for_config} -color bold"]:
-                 shell_input = input(f"{BOLD}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = BOLD
                  continue
             elif shell_input in [f"{cmd_for_config} -color blue"]:
-                 shell_input = input(f"{BLUE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = BLUE
                  continue
             elif shell_input in [f"{cmd_for_config} -color orange"]:
-                 shell_input = input(f"{ORANGE}┌──({custom_prompt}{root_state}{user})-[~]\n└─[ {RESET}")
+                 prompt_color = ORANGE
                  continue
             elif shell_input in [f"{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD"]:
                 raid_discord()
