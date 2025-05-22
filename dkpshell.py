@@ -420,7 +420,7 @@ def shell():
                  prompt_color = CYAN
                  continue
             elif shell_input in [f"{cmd_for_config} -color magenta"]:
-             prompt_color = MAGENTA
+                 prompt_color = MAGENTA
                  continue
             elif shell_input in [f"{cmd_for_config} -color white"]:
                  prompt_color = WHITE
