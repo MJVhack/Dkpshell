@@ -24,7 +24,7 @@ import asyncio
 
 
 __version__ = "4.2"
-__stable__ = False
+__stable__ = True
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
