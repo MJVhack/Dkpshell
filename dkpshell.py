@@ -23,7 +23,8 @@ import asyncio
 
 
 
-__version__ = "3.9"
+__version__ = "4.1"
+__stable__ = False
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -125,6 +126,25 @@ def raid_discord():
 
 
 
+def check_stability():
+    update_url = "https://raw.githubusercontent.com/MJVhack/MJVhack/refs/heads/main/dkpshell.py"
+
+    try:
+        with urllib.request.urlopen(update_url) as response:
+            remote_code = response.read().decode("utf-8")
+
+        stable_match = re.search(r'__stable__\s*=\s*(True|False)', remote_code)
+
+        if stable_match:
+            is_stable = stable_match.group(1) == "True"
+            status = f"{GREEN}stable{RESET}" if is_stable else f"{YELLOW}instable{RESET}"
+            print(f"{CYAN}[INFO] La version distante est : {status}")
+        else:
+            print(f"{RED}[Erreur] Clé '__stable__' non trouvée dans le script distant.{RESET}")
+
+    except Exception as e:
+        print(f"{RED}[Erreur] Impossible de vérifier la stabilité distante : {e}{RESET}")
+
 
 def check_update():
     try:
@@ -139,6 +159,7 @@ def check_update():
             if remote_version > __version__:
                 print(f"{MAGENTA}[DKP Shell] : Une mise à jour est disponible ({__version__} → {remote_version}){RESET}")
                 print(f"{CYAN}➜ Lance la commande `dkpupdate` pour mettre à jour{RESET}")
+                check_stability()
     except Exception as e:
         print(f"{RED}[DKP Shell] : Échec de vérification de mise à jour : {e}\033[0m")
         
