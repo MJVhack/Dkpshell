@@ -23,7 +23,7 @@ import asyncio
 
 
 
-__version__ = "4.1"
+__version__ = "4.2"
 __stable__ = False
 RED = "\033[91m"
 GREEN = "\033[92m"
@@ -485,7 +485,7 @@ def shell():
                 OsintMenu()
 
             elif shell_input == f"{cmd_for_config} -color config":
-                print("Cette option a été momontanément désactiver.")
+                print(f"{ORANGE}Cette option a été momontanément désactiver.")
 
             elif shell_input == f"{cmd_for_config} -updlist":
                 print(updlist)
