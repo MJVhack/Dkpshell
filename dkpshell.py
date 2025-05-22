@@ -415,6 +415,8 @@ def shell():
                 print(f"{MAGENTA}{cmd_for_config} -colorlist {RESET}")
                 print(f"{MAGENTA}{cmd_for_config.replace('config', 'update')}{RESET}")
                 print(f"{MAGENTA}{cmd_for_config.replace('config', 'tool')}{RESET}")
+                print(f"{MAGENTA}{cmd_for_config} -restartshell")
+                print(f"{MAGENTA}{cmd_for_config} -exit")
                 continue
             elif shell_input in [f"{cmd_for_config} -colorlist"]:
                  print(f'''{MAGENTA}DKPSHELL color
