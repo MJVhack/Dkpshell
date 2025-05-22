@@ -332,7 +332,13 @@ updlist = f"""{YELLOW}NEW ADD{BLUE}
     [*]bug a cause de gemini, très difficile
 ------------3.9----------
 [!]bugs
-     [*]Resolu le bug des variables dans raid_discord"""
+     [*]Resolu le bug des variables dans raid_discord
+----------4.1------------
+[+]add 'stable' and '{cmd_for_config} -stable' and '{cmd_for_config} -version'
+    [*]Permet de savoir si la prochaine update est vraiment utilisable (sans bug ou seulement d'affichage) nou instable (surement non verifié ou bugué)
+    [*]'{cmd_for_config} -stable' permet de savoir si la prochaine version (si y'en a une disponible) est stable
+    [*]'{cmd_for_config} -version' affiche votre version actuelle
+    """
 # Affichage ASCII Art
 ascii_art = fr"""{CYAN}
 <!-- .------------------------------------------------------------------------------------------------. -->
@@ -492,6 +498,12 @@ def shell():
 
             elif shell_input == f"{cmd_for_config} -updlist":
                 print(updlist)
+
+             elif shell_input == f"{cmd_for_config} -version":
+                 print(__version__)
+
+             elif shell_input == f"{cmd_for_config} -stable":
+                 check_stability()
                 
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
                 print(f"{CYAN}[DKP Shell] : Mise à jour en cours...{RESET}")
