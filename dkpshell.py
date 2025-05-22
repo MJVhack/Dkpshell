@@ -380,6 +380,7 @@ else:
 
 
 def shell():
+    global prompt_color
     user = getpass.getuser()
     root_state = "{ROOTED}" if is_root() else "{USER}"
     try:
