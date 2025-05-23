@@ -500,10 +500,10 @@ def shell():
                 print(updlist)
 
             elif shell_input == f"{cmd_for_config} -version":
-                 print(__version__)
+                print(__version__)
 
             elif shell_input == f"{cmd_for_config} -stable":
-                 check_stability()
+                check_stability()
                 
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
                 print(f"{CYAN}[DKP Shell] : Mise à jour en cours...{RESET}")
