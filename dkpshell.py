@@ -20,7 +20,7 @@ try:
 except ImportError:
     print(f"Discord.py is not installed, use {cmd_for_config} -installall")
 import asyncio
-from tools import 
+from tools import *
 
 
 __version__ = "4.4"
