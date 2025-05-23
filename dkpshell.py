@@ -338,16 +338,30 @@ def shell():
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
                 print(f"{Colors.CYAN}[DKP Shell] : Mise à jour en cours...{Colors.RESET}")
                 try:
-                    # Variables
-                    update_url = "https://raw.githubusercontent.com/MJVhack/MJVhack/refs/heads/main/dkpshell.py"  # 🔁 Modifie ici
+                    base_repo_url = "https://raw.githubusercontent.com/MJVhack/MJVhack/main"
                     local_script = os.path.realpath(__file__)
-                    bin_path = "/usr/local/bin/dkp"  # ou '~/bin/dkp' selon où tu le copies
+                    tools_dir = "tools"
 
-                    # Télécharger nouvelle version
-                    urllib.request.urlretrieve(update_url, local_script)
-                    print(f"{Colors.GREEN}[✓] Script local mis à jour : {local_script}{Colors.RESET}")
+                    # 📦 Liste des fichiers à mettre à jour
+                    files_to_update = [
+                        "dkpshell.py",  # C’est ton "main"
+                        "tools/__init__.py",
+                        "tools/ton_script.py",  # ajoute ici tous tes scripts dans tools/
+                    ]
 
-                    # Copier vers /usr/local/bin (accès global)
+                    for file in files_to_update:
+                        url = f"{base_repo_url}/{file}"
+                        local_path = os.path.join(os.getcwd(), file)
+
+                        # Créer les dossiers au besoin
+                    os.makedirs(os.path.dirname(local_path), exist_ok=True)
+
+                    print(f"{Colors.YELLOW}→ Téléchargement : {file}{Colors.RESET}")
+                    urllib.request.urlretrieve(url, local_path)
+                    print(f"{Colors.GREEN}[✓] Mis à jour : {file}{Colors.RESET}")
+
+                    # 📂 Copier vers /usr/local/bin (si applicable)
+                    bin_path = "/usr/local/bin/dkp"
                     if os.path.exists(bin_path) or os.access(os.path.dirname(bin_path), os.W_OK):
                         shutil.copy(local_script, bin_path)
                         os.chmod(bin_path, 0o755)
@@ -355,14 +369,15 @@ def shell():
                     else:
                         print(f"{Colors.YELLOW}[!] Pas de permission pour écrire dans {bin_path}. Skipped.{Colors.RESET}")
 
-                    # Redémarrer le shell automatiquement
+                    # 🔄 Redémarrer le shell automatiquement
                     print(f"{Colors.CYAN}[DKP Shell] : Redémarrage du shell...{Colors.RESET}")
                     python_exe = sys.executable
                     os.execv(python_exe, [python_exe, local_script])
-                    
-                except Exception as e:
-                    print(f"{Colors.RED}[Erreur] : La mise à jour a échoué : {e}{Colors.RESET}")
-                continue
+
+                    except Exception as e:
+                        print(f"{Colors.RED}[Erreur] : La mise à jour a échoué : {e}{Colors.RESET}")
+                    continue
+
 
                 
 
