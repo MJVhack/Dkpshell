@@ -499,7 +499,7 @@ def shell():
             elif shell_input == f"{cmd_for_config} -updlist":
                 print(updlist)
 
-             elif shell_input == f"{cmd_for_config} -version":
+            elif shell_input == f"{cmd_for_config} -version":
                  print(__version__)
 
              elif shell_input == f"{cmd_for_config} -stable":
