@@ -502,7 +502,7 @@ def shell():
             elif shell_input == f"{cmd_for_config} -version":
                  print(__version__)
 
-             elif shell_input == f"{cmd_for_config} -stable":
+            elif shell_input == f"{cmd_for_config} -stable":
                  check_stability()
                 
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
