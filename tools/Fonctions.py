@@ -45,7 +45,7 @@ def check_stability():
   update_url = "https://raw.githubusercontent.com/MJVhack/Dkpshell/refs/heads/main/dkpshell.py"
   try:
       with urllib.request.urlopen(update_url) as response:
-      remote_code = response.read().decode("utf-8")
+          remote_code = response.read().decode("utf-8")
 
       stable_match = re.search(r'__stable__\s*=\s*(True|False)', remote_code)
 
