@@ -1,47 +1,46 @@
 def dkpupdate():
-  print(f"{Colors.CYAN}[DKP Shell] : Mise à jour en cours...{Colors.RESET}")
-  try:
-    base_repo_url = "https://raw.githubusercontent.com/MJVhack/Dkpshell/main"
-    local_script = os.path.realpath(__file__)
-    tools_dir = "tools"
+    print(f"{Colors.CYAN}[DKP Shell] : Mise à jour en cours...{Colors.RESET}")
+    try:
+        base_repo_url = "https://raw.githubusercontent.com/MJVhack/Dkpshell/main"
+        local_script = os.path.realpath(__file__)
+        tools_dir = "tools"
 
-    # 📦 Liste des fichiers à mettre à jour
-    files_to_update = [
-      "dkpshell.py",  # C’est ton "main"
-      "tools/__init__.py",
-      "tools/Colors.py",
-      "tools/Dkp_msfvenom.py",
-      "tools/OsintMenu.py",
-      "tools/Raid_Discord.py"# ajoute ici tous tes scripts dans tools/
-      ]
+        # 📦 Liste des fichiers à mettre à jour
+        files_to_update = [
+            "dkpshell.py",  # C’est ton "main"
+            "tools/__init__.py",
+            "tools/Colors.py",
+            "tools/Dkp_msfvenom.py",
+            "tools/OsintMenu.py",
+            "tools/Raid_Discord.py"
+        ]
 
-      for file in files_to_update:
-        url = f"{base_repo_url}/{file}"
-        local_path = os.path.join(os.getcwd(), file)
-        os.makedirs(os.path.dirname(local_path), exist_ok=True)
+        for file in files_to_update:
+            url = f"{base_repo_url}/{file}"
+            local_path = os.path.join(os.getcwd(), file)
+            os.makedirs(os.path.dirname(local_path), exist_ok=True)
 
-      print(f"{Colors.YELLOW}→ Téléchargement : {file}{Colors.RESET}")
-      urllib.request.urlretrieve(url, local_path)
-      print(f"{Colors.GREEN}[✓] Mis à jour : {file}{Colors.RESET}")
+            print(f"{Colors.YELLOW}→ Téléchargement : {file}{Colors.RESET}")
+            urllib.request.urlretrieve(url, local_path)
+            print(f"{Colors.GREEN}[✓] Mis à jour : {file}{Colors.RESET}")
 
-      # 📂 Copier vers /usr/local/bin (si applicable)
-      bin_path = "/usr/local/bin/dkp"
-      if os.path.exists(bin_path) or os.access(os.path.dirname(bin_path), os.W_OK):
-        shutil.copy(local_script, bin_path)
-        os.chmod(bin_path, 0o755)
-        print(f"{Colors.GREEN}[✓] Script copié dans {bin_path}{Colors.RESET}")
-      else:
-        print(f"{Colors.YELLOW}[!] Pas de permission pour écrire dans {bin_path}. Skipped.{Colors.RESET}")
+        # 📂 Copier vers /usr/local/bin (si applicable)
+        bin_path = "/usr/local/bin/dkp"
+        if os.path.exists(bin_path) or os.access(os.path.dirname(bin_path), os.W_OK):
+            shutil.copy(local_script, bin_path)
+            os.chmod(bin_path, 0o755)
+            print(f"{Colors.GREEN}[✓] Script copié dans {bin_path}{Colors.RESET}")
+        else:
+            print(f"{Colors.YELLOW}[!] Pas de permission pour écrire dans {bin_path}. Skipped.{Colors.RESET}")
 
-      # 🔄 Redémarrer le shell automatiquement
-      print(f"{Colors.CYAN}[DKP Shell] : Redémarrage du shell...{Colors.RESET}")
-      python_exe = sys.executable
-      os.execv(python_exe, [python_exe, local_script])
+        # 🔄 Redémarrer le shell automatiquement
+        print(f"{Colors.CYAN}[DKP Shell] : Redémarrage du shell...{Colors.RESET}")
+        python_exe = sys.executable
+        os.execv(python_exe, [python_exe, local_script])
 
     except Exception as e:
-      print(f"{Colors.RED}[Erreur] : La mise à jour a échoué : {e}{Colors.RESET}")
-    continue
-
+        print(f"{Colors.RED}[Erreur] : La mise à jour a échoué : {e}{Colors.RESET}")
+      continue
 def check_stability():
   update_url = "https://raw.githubusercontent.com/MJVhack/Dkpshell/refs/heads/main/dkpshell.py"
   try:
