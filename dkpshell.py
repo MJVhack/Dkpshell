@@ -327,9 +327,9 @@ def shell():
                         "dkpshell.py",  # C’est ton "main"
                         "tools/__init__.py",
                         "tools/Colors.py",
-                        "Dkp_msfvenom.py",
-                        "OsintMenu.py",
-                        "Raid_Discord.py"# ajoute ici tous tes scripts dans tools/
+                        "tools/Dkp_msfvenom.py",
+                        "tools/OsintMenu.py",
+                        "tools/Raid_Discord.py"# ajoute ici tous tes scripts dans tools/
                     ]
 
                     for file in files_to_update:
