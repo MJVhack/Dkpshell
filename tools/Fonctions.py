@@ -1,4 +1,5 @@
 from .Colors import *
+cmd_for_config = "dkpconfig"
 
 def dkpupdate():
     print(f"{Colors.CYAN}[DKP Shell] : Mise à jour en cours...{Colors.RESET}")
