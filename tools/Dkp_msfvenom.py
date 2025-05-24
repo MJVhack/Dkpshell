@@ -14,7 +14,8 @@ def gen_msfvenom():
     # les inputs
     print(f"{Colors.RED}[!]IMPORTANT: Je ne suis pas responsable de ce que tu fais avec ce script, ceci est a but éducatif{Colors.RESET}")
     LHOST = input(f"{Colors.YELLOW}Ton ip?: ")
-    LPORT = input(f"Le port?: {Colors.RESET}")
+    LPORT = input(f"Le port?: ")
+    print(Colors.RESET)
 
     print(f"{Colors.CYAN}-------MSFVENOM DKP MENU----------")
     print("")
