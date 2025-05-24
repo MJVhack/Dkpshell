@@ -40,7 +40,7 @@ def dkpupdate():
 
     except Exception as e:
         print(f"{Colors.RED}[Erreur] : La mise à jour a échoué : {e}{Colors.RESET}")
-      continue
+    continue
 def check_stability():
   update_url = "https://raw.githubusercontent.com/MJVhack/Dkpshell/refs/heads/main/dkpshell.py"
   try:
