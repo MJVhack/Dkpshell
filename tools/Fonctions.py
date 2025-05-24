@@ -1,3 +1,4 @@
+cmd_for_config = "dkpconfig"
 import sys
 import os
 import getpass
@@ -19,7 +20,7 @@ except ImportError:
     print(f"Discord.py is not installed, use {cmd_for_config} -installall")
 import asyncio
 from .Colors import *
-cmd_for_config = "dkpconfig"
+
 
 def dkpupdate():
     print(f"{Colors.CYAN}[DKP Shell] : Mise à jour en cours...{Colors.RESET}")
