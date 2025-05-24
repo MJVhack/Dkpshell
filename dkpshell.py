@@ -301,7 +301,9 @@ def shell():
             elif shell_input in [f"{cmd_for_config} -installall"]:
                 install_all()
                 
-                
+            elif shell_input in [f"{cmd_for_config.replace('config', 'tool')} -e DkpMsfvenom"]:
+                gen_msfvenom()
+            
             elif shell_input in [f"{cmd_for_config} -restartshell"]:
                 print(f"{Colors.YELLOW}[DKP Shell] : Redémarrage du shell...{Colors.RESET}")
                 python_exe = sys.executable  # Chemin vers l'interpréteur Python
@@ -320,7 +322,7 @@ def shell():
                 print("[RAID DISCORD BY BOT DISCORD]: dkptool -e RaidDiscordBD")
                 print("")
 
-            elif shell_input == f"{cmd_for_config.replace('config', 'tool')} -e MenuOsint":
+            elif shell_input == f"{cmd_for_config.replace('config', 'tool')} -e OsintMenu":
                 OsintMenu()
 
             elif shell_input == f"{cmd_for_config} -color config":
