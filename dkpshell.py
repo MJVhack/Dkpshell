@@ -29,7 +29,7 @@ __stable__ = False
 prompt_color = Colors.BLUE
 
 def check_stability():
-    update_url = "https://raw.githubusercontent.com/MJVhack/MJVhack/refs/heads/main/dkpshell.py"
+    update_url = "https://raw.githubusercontent.com/MJVhack/Dkpshell/refs/heads/main/dkpshell.py"
 
     try:
         with urllib.request.urlopen(update_url) as response:
@@ -50,7 +50,7 @@ def check_stability():
 
 def check_update():
     try:
-        url = "https://raw.githubusercontent.com/MJVhack/MJVhack/main/dkpshell.py"
+        url = "https://raw.githubusercontent.com/MJVhack/Dkpshell/main/dkpshell.py"
         with urllib.request.urlopen(url) as response:
             remote_code = response.read().decode("utf-8")
         
@@ -318,7 +318,7 @@ def shell():
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
                 print(f"{Colors.CYAN}[DKP Shell] : Mise à jour en cours...{Colors.RESET}")
                 try:
-                    base_repo_url = "https://raw.githubusercontent.com/MJVhack/MJVhack/main"
+                    base_repo_url = "https://raw.githubusercontent.com/MJVhack/Dkpshell/main"
                     local_script = os.path.realpath(__file__)
                     tools_dir = "tools"
 
@@ -326,15 +326,16 @@ def shell():
                     files_to_update = [
                         "dkpshell.py",  # C’est ton "main"
                         "tools/__init__.py",
-                        "tools/ton_script.py",  # ajoute ici tous tes scripts dans tools/
+                        "tools/Colors.py",
+                        "Dkp_msfvenom.py",
+                        "OsintMenu.py",
+                        "Raid_Discord.py"# ajoute ici tous tes scripts dans tools/
                     ]
 
                     for file in files_to_update:
                         url = f"{base_repo_url}/{file}"
                         local_path = os.path.join(os.getcwd(), file)
-
-                        # Créer les dossiers au besoin
-                    os.makedirs(os.path.dirname(local_path), exist_ok=True)
+                        os.makedirs(os.path.dirname(local_path), exist_ok=True)
 
                     print(f"{Colors.YELLOW}→ Téléchargement : {file}{Colors.RESET}")
                     urllib.request.urlretrieve(url, local_path)
