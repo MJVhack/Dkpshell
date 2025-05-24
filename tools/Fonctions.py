@@ -43,23 +43,22 @@ def dkpupdate():
     continue
 
 def check_stability():
-    update_url = "https://raw.githubusercontent.com/MJVhack/Dkpshell/refs/heads/main/dkpshell.py"
+  update_url = "https://raw.githubusercontent.com/MJVhack/Dkpshell/refs/heads/main/dkpshell.py"
+  try:
+      with urllib.request.urlopen(update_url) as response:
+      remote_code = response.read().decode("utf-8")
 
-    try:
-        with urllib.request.urlopen(update_url) as response:
-            remote_code = response.read().decode("utf-8")
+      stable_match = re.search(r'__stable__\s*=\s*(True|False)', remote_code)
 
-        stable_match = re.search(r'__stable__\s*=\s*(True|False)', remote_code)
+      if stable_match:
+          is_stable = stable_match.group(1) == "True"
+          status = f"{Colors.GREEN}stable{Colors.RESET}" if is_stable else f"{Colors.YELLOW}instable{Colors.RESET}"
+          print(f"{Colors.CYAN}[INFO] La version distante est : {status}")
+      else:
+          print(f"{Colors.RED}[Erreur] Clé '__stable__' non trouvée dans le script distant.{Colors.RESET}")
 
-        if stable_match:
-            is_stable = stable_match.group(1) == "True"
-            status = f"{Colors.GREEN}stable{Colors.RESET}" if is_stable else f"{Colors.YELLOW}instable{Colors.RESET}"
-            print(f"{Colors.CYAN}[INFO] La version distante est : {status}")
-        else:
-            print(f"{Colors.RED}[Erreur] Clé '__stable__' non trouvée dans le script distant.{Colors.RESET}")
-
-    except Exception as e:
-        print(f"{Colors.RED}[Erreur] Impossible de vérifier la stabilité distante : {e}{Colors.RESET}")
+  except Exception as e:
+      print(f"{Colors.RED}[Erreur] Impossible de vérifier la stabilité distante : {e}{Colors.RESET}")
 
 def check_update():
     try:
