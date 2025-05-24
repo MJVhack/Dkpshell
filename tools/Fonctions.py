@@ -1,5 +1,23 @@
 import sys
 import os
+import getpass
+import shutil
+import urllib.request
+try:
+    import readline
+except ImportError:
+    import pyreadline3 as readline
+
+import atexit
+import rlcompleter
+import subprocess
+import re
+try:
+    import discord
+    from discord.ext import commands
+except ImportError:
+    print(f"Discord.py is not installed, use {cmd_for_config} -installall")
+import asyncio
 from .Colors import *
 cmd_for_config = "dkpconfig"
 
