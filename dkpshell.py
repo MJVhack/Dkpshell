@@ -354,9 +354,9 @@ def shell():
                     python_exe = sys.executable
                     os.execv(python_exe, [python_exe, local_script])
 
-                    except Exception as e:
-                        print(f"{Colors.RED}[Erreur] : La mise à jour a échoué : {e}{Colors.RESET}")
-                    continue
+                except Exception as e:
+                    print(f"{Colors.RED}[Erreur] : La mise à jour a échoué : {e}{Colors.RESET}")
+                continue
 
 
                 
