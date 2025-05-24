@@ -23,7 +23,7 @@ import asyncio
 from tools import *
 
 
-__version__ = "5.1"
+__version__ = "5.2"
 __stable__ = False
 
 prompt_color = Colors.BLUE
