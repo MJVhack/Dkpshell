@@ -95,3 +95,31 @@ def install_all():
     print(f"{Colors.GREEN}Discord.py succcesful installed{Colors.RESET}")
 
 
+def restart_shell():
+    print(f"{Colors.YELLOW}[DKP Shell] : Redémarrage du shell...{Colors.RESET}")
+    python_exe = sys.executable  # Chemin vers l'interpréteur Python
+    script_path = os.path.realpath(__file__)  # Chemin vers le script courant
+    os.execv(python_exe, [python_exe, script_path])  # Relance le script
+
+color_list = f'''{Colors.MAGENTA}DKPSHELL color
+                 
+                 RED = {cmd_for_config} -color red
+                 GREEN = {cmd_for_config} -color green
+                 YELLOW = {cmd_for_config} -color yellow
+                 CYAN = {cmd_for_config} -color cyan
+                 MAGENTA = {cmd_for_config} -color magenta
+                 WHITE = {cmd_for_config} -color white
+                 BOLD = {cmd_for_config} -color bold
+                 BLUE = {cmd_for_config} -color blue
+                 ORANGE = {cmd_for_config} -color orange'''
+def help_list():
+    print(f"{Colors.MAGENTA}DKPSHELL help")
+    print("")
+    print(f"{Colors.MAGENTA}{cmd_for_config} -colorlist {Colors.RESET}")
+    print(f"{Colors.MAGENTA}{cmd_for_config.replace('config', 'update')}{Colors.RESET}")
+    print(f"{Colors.MAGENTA}{cmd_for_config.replace('config', 'tool')}{Colors.RESET}")
+    print(f"{Colors.MAGENTA}{cmd_for_config} -restartshell")
+    print(f"{Colors.MAGENTA}{cmd_for_config} -exit")
+    print(f"{Colors.MAGENTA}{cmd_for_config} -updlist")
+
+
