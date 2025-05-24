@@ -142,32 +142,9 @@ def install_all():
     print(f"{Colors.GREEN}Discord.py succcesful installed{Colors.RESET}")
 
 updlist = f"""{Colors.YELLOW}NEW ADD{Colors.BLUE}
---------------3.0--------------------
-[+] add '{cmd_for_config} -installall', '{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD', '{cmd_for_config} -updlist'
-    [*]{cmd_for_config} -installall: Avant pour installer les modules, il fallait lancer Osint Menu, plus maintenant. Desormais meme les modules pour {Colors.MAGENTA}[dkpshell.py]{Colors.BLUE} sont installer et update via {cmd_for_config} -installall
-    [*]{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD: Permet de lancer le nnouveau module 'raid_discord' V1 avec IMPERATIVEMENT un token de bot DISCORD
-    [*]{cmd_for_config} -updlist: réaffiche ce que vous lisez maintenant
-[+]add 'The Update list'
-    [*]The Update List: Ce que vous lisez maintenant
-[!] point:
-    [*]'{cmd_for_config} -color config' est toujours en maintenance et pour un bon moment
-    [*]'Le tab est toujours bugué et va être supprimer dans la nouvelle mise a jour
-    [*]L'Update List sera reset que tout les 2 update MAJEURES (2.0 -> 2.1: non majeure; 2.0 -> 3.0: majeure) entre temps seulement des choses seront RAJOUTER a l'Update List
-    [*]Le bug des commandes hors dkp qui crash est réglé (retour a une version antérieur)
------------------3.5--------------
-[!]bugs:
-    [*]Bug de la commande '{cmd_for_config.replace("config", "tool")} -e RaidDiscordBD', un enfer.
-----------3.8----------------
-[!]bugs:
-    [*]bug a cause de gemini, très difficile
-------------3.9----------
-[!]bugs
-     [*]Resolu le bug des variables dans raid_discord
-----------4.1------------
-[+]add 'stable' and '{cmd_for_config} -stable' and '{cmd_for_config} -version'
-    [*]Permet de savoir si la prochaine update est vraiment utilisable (sans bug ou seulement d'affichage) nou instable (surement non verifié ou bugué)
-    [*]'{cmd_for_config} -stable' permet de savoir si la prochaine version (si y'en a une disponible) est stable
-    [*]'{cmd_for_config} -version' affiche votre version actuelle
+----------5.1------------
+[+]add '{cmd_for_config.replace('config', 'tool')} -e DkpMsfvenom'
+    [*]outil puissant utilisant METASPLOIT pour créer des payloads
     """
 # Affichage ASCII Art
 ascii_art = fr"""{Colors.CYAN}
@@ -320,7 +297,8 @@ def shell():
                 print("")
                 print("[OSINT MENU]: dkptool -e OsintMenu")
                 print("[RAID DISCORD BY BOT DISCORD]: dkptool -e RaidDiscordBD")
-                print("")
+                print("[Dkp Msfvenom]: dkptool -e DkpMsfvenom")
+                print(f"{Colors.RESET}")
 
             elif shell_input == f"{cmd_for_config.replace('config', 'tool')} -e OsintMenu":
                 OsintMenu()
