@@ -1,3 +1,4 @@
+import os
 from .Colors import *
 cmd_for_config = "dkpconfig"
 
