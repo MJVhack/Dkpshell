@@ -24,7 +24,7 @@ from tools import *
 
 
 __version__ = "5.4"
-__stable__ = False
+__stable__ = True
 
 prompt_color = Colors.BLUE
 
