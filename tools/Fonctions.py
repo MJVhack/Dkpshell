@@ -36,8 +36,9 @@ def dkpupdate():
             "tools/Colors.py",
             "tools/Dkp_msfvenom.py",
             "tools/OsintMenu.py",
-            "tools/Raid_Discord.py"
-            "tools/DDOS.py"
+            "tools/Raid_Discord.py",
+            "tools/DDOS.py",
+            "tools/Fonctions.py"
         ]
 
         for file in files_to_update:
