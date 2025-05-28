@@ -1,7 +1,7 @@
 import subprocess
 import platform
 import os
-from .Colors import *
+from Colors import *
 
 def DDOS():
     print(f"{Colors.RED} Je ne suis pas responsable de ce que vous faites avec cette outils{Colors.RESET}")
