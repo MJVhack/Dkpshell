@@ -23,7 +23,7 @@ import asyncio
 from tools import *
 
 
-__version__ = "5.4"
+__version__ = "5.5"
 __stable__ = True
 
 prompt_color = Colors.BLUE
@@ -40,6 +40,9 @@ updlist = f"""{Colors.YELLOW}NEW ADD{Colors.BLUE}
 ----------5.1------------
 [+]add '{cmd_for_config.replace('config', 'tool')} -e DkpMsfvenom'
     [*]outil puissant utilisant METASPLOIT pour créer des payloads
+-----------5.5-----------------
+[+]add '{cmd_for_config.replace('config', 'tool')} -e DDOS'
+    [*]outil de DDOS visant un site particulier définie
     """
 # Affichage ASCII Art
 ascii_art = fr"""{Colors.CYAN}
@@ -169,6 +172,7 @@ def shell():
                 print("[OSINT MENU]: dkptool -e OsintMenu")
                 print("[RAID DISCORD BY BOT DISCORD]: dkptool -e RaidDiscordBD")
                 print("[Dkp Msfvenom]: dkptool -e DkpMsfvenom")
+                print("[DDOS]: dkptool -e DDOS")
                 print(f"{Colors.RESET}")
 
             elif shell_input == f"{cmd_for_config.replace('config', 'tool')} -e OsintMenu":
@@ -188,6 +192,9 @@ def shell():
                 
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
                 dkpupdate()
+
+            elif shell_input == f"{cmd_for_config.replace('config', 'tool') -e DDOS}":
+                DDOS()
             else:
                 print(f"{Colors.RED}Commande non reconnu en tant que commande {Colors.MAGENTA}[DKP]")
                 print(f"{Colors.YELLOW}")
