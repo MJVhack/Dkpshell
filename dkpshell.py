@@ -193,7 +193,7 @@ def shell():
             elif shell_input == f"{cmd_for_config.replace('config', 'update')}":
                 dkpupdate()
 
-            elif shell_input == f"{cmd_for_config.replace('config', 'tool') -e DDOS}":
+            elif shell_input == f"{cmd_for_config.replace('config', 'tool')} -e DDOS":
                 DDOS()
             else:
                 print(f"{Colors.RED}Commande non reconnu en tant que commande {Colors.MAGENTA}[DKP]")
