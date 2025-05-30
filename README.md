@@ -1,5 +1,5 @@
 [#]Dkpshell:
-Shell customizé en python créer par MJVhack. 
+Shell customizé en python créer par MJVhack. [ABANDONNE A CAUSE DE MANQUE DE TESTEUR] Etat de la dernière version: Instabl et presente énormément d'erreur.
 
 [*]Première execution:
 ```
