@@ -1,5 +1,5 @@
 from .Colors import * 
-import subproces
+import subprocess
 
 def OsintMenu():
 
